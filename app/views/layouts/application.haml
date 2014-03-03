@@ -1,0 +1,18 @@
+!!!
+%html
+  %head
+    = csrf_meta_tag
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag :application
+    %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
+    %meta{ content: 'text/html; charset=UTF-8', http: { equiv: 'Content-type' } }
+    %title Hipocrates
+
+  %body#main_container{ data: { view_name: "#{controller_name}-#{action_name}" } }
+    #controller_wrapper{ class: controller_name }
+      #wrapper{ class: action_name }
+        - if notice.present?
+          .container
+            .row
+            .col-xs-12.alert.alert-info#notice= notice
+        = yield
