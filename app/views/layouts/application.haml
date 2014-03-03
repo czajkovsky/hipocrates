@@ -6,13 +6,24 @@
     = javascript_include_tag :application
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
     %meta{ content: 'text/html; charset=UTF-8', http: { equiv: 'Content-type' } }
-    %title Hipocrates
+    %title Hipocrates App
 
   %body#main_container{ data: { view_name: "#{controller_name}-#{action_name}" } }
     #controller_wrapper{ class: controller_name }
       #wrapper{ class: action_name }
+
+        %nav.navbar.navbar-default{ role: "navigation" }
+          .container
+            .navbar-header
+              = link_to 'Hipocrates App', root_path, class: 'navbar-brand'
+            %ul.nav.navbar-nav
+              %li= link_to 'Stuff', '#'
+              %li= link_to 'Patients', '#'
+              %li= link_to 'Services', '#'
+
         - if notice.present?
           .container
             .row
             .col-xs-12.alert.alert-info#notice= notice
-        = yield
+
+        .container= yield

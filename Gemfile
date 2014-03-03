@@ -5,11 +5,14 @@ gem 'mongoid', github: 'mongoid/mongoid'
 gem 'bson_ext'
 
 gem 'haml'
-gem 'sass-rails', '~> 4.0.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.0.0'
+gem 'bootstrap-sass', '~> 3.0.3.0'
 gem 'jquery-rails'
 gem 'turbolinks'
+
+gem 'uglifier', '>= 1.0.3'
+gem 'sass-rails'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'bourbon'
 
 group :doc do
   gem 'sdoc', require: false
