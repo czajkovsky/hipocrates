@@ -1,0 +1,10 @@
+.row
+  .col-lg-12
+    %h2 Stuff
+= render 'users/table', folks: doctors, speciality: true
+= render 'users/table', folks: nurses, speciality: false
+= render 'users/table', folks: office_stuff, speciality: false
+= render 'users/table', folks: admins, speciality: false
+.row
+  .col-lg-12
+    = link_to 'New user', new_user_path, class: 'btn btn-success'

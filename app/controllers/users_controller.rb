@@ -1,10 +1,14 @@
 class UsersController < ApplicationController
 
   expose(:all_users) { User.all.decorate }
-  expose(:patients) { User.patients.decorate }
   expose(:user, attributes: :permitted_params)
   expose(:relative) { user.relative || Relative.new }
 
+  expose(:patients) { User.by_role(:patient).decorate }
+  expose(:admins) { User.by_role(:admin).decorate }
+  expose(:nurses) { User.by_role(:nurse).decorate }
+  expose(:office_stuff) { User.by_role(:office).decorate }
+  expose(:doctors) { User.by_role(:doctor).decorate }
 
   def create
     if user.save
