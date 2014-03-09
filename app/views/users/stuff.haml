@@ -1,10 +1,22 @@
 .row
   .col-lg-12
     %h2 Stuff
-= render 'users/table', folks: doctors, speciality: true
-= render 'users/table', folks: nurses, speciality: false
-= render 'users/table', folks: office_stuff, speciality: false
-= render 'users/table', folks: admins, speciality: false
+.row
+  .col-lg-12
+    .nav.nav-tabs
+      %li.active= link_to 'Doctors', '#doctors', data: { toggle: 'tab' }
+      %li= link_to 'Nurses', '#nurses', data: { toggle: 'tab' }
+      %li= link_to 'Office', '#office', data: { toggle: 'tab' }
+      %li= link_to 'Admins', '#admins', data: { toggle: 'tab' }
+.tab-content
+  .tab-pane.active#doctors
+    = render 'users/table', folks: doctors, speciality: true
+  .tab-pane#nurses
+    = render 'users/table', folks: nurses, speciality: false
+  .tab-pane#office
+    = render 'users/table', folks: office_stuff, speciality: false
+  .tab-pane#admins
+    = render 'users/table', folks: admins, speciality: false
 .row
   .col-lg-12
     = link_to 'Add new stuff member', new_user_path, class: 'btn btn-success'
