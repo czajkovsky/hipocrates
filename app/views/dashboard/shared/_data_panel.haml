@@ -1,0 +1,13 @@
+.panel.panel-default
+  .panel-heading
+    %h4.panel-title
+      = link_to name, "##{id}", data: { parent: '#accordion', toggle: 'collapse' }
+  .panel-collapse.collapse{ id: id }
+    .panel-body
+      %table.table.table-bordered
+        %tbody
+          - fields.each do |f|
+            %tr
+              %td= f.gsub(/_/, ' ').capitalize
+              %td= current_user.public_send(f)
+
