@@ -17,9 +17,7 @@
             .navbar-header
               = link_to 'Hipocrates App', root_path, class: 'navbar-brand'
             %ul.nav.navbar-nav
-              %li= link_to 'Stuff', '#'
-              %li= link_to 'Patients', '#'
-              %li= link_to 'Services', '#'
+              %li= link_to 'Users', users_path
 
         - if notice.present?
           .container
