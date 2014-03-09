@@ -1,11 +1,33 @@
 = simple_form_for user do |f|
   .row
     .col-lg-6
+
       .panel.panel-default
         .panel-heading Personal data
         .panel-body
           = f.input :name
           = f.input :surname
-  .row
+          = f.input :PESEL
+          = f.input :NIP
+          = f.input :id_number
+          = f.input :id_serial
+
+      .panel.panel-default
+        .panel-heading Birth place
+        .panel-body
+          .form-inline
+            = f.input :date_of_birth, as: :date, start_year: Date.today.year - 100, end_year: Date.today.year
+          = f.input :place_of_birth
+
+    .col-lg-6
+
+      .panel.panel-default
+        .panel-heading Contact
+        .panel-body
+          = f.input :street
+          = f.input :city
+          = f.input :email
+          = f.input :phone
+
     .col-lg-12
       = f.button :submit, class: 'btn btn-success'
