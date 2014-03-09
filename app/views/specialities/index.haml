@@ -1,0 +1,22 @@
+.row
+  .col-lg-12
+    %h2 Specialities
+.row
+  .col-lg-12
+    %table.table.table-striped.table-bordered
+      %thead
+        %tr
+          %th Num
+          %th Name
+          %th Actions
+      %tbody
+        - specialities.each_with_index do |s, i|
+          %tr
+            %td= i + 1
+            %td= s.name
+            %td
+              = link_to 'Delete speciality', speciality_path(s), method: :delete, class: 'btn btn-xs btn-danger pull-right'
+              = link_to 'Edit speciality', edit_speciality_path(s), class: 'btn btn-xs btn-default pull-right'
+.row
+  .col-lg-12
+    = link_to 'New speciality', new_speciality_path, class: 'btn btn-success'
