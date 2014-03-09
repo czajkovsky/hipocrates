@@ -8,6 +8,7 @@
         %tr
           %th Num
           %th Name
+          %th Role
           %th PESEL
           %th Date of birth
           %th Actions
@@ -16,6 +17,8 @@
           %tr
             %td= i + 1
             %td= "#{u.name} #{u.surname}"
+            %td
+              %span.label{ class: "label-#{u.label_class}" }= u.role.name
             %td= u.PESEL
             %td= u.date_of_birth
             %td

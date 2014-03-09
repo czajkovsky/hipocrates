@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  expose(:users)
+  expose(:users) { User.all.decorate }
   expose(:user, attributes: :permitted_params)
   expose(:relative) { user.relative || Relative.new }
 
