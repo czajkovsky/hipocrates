@@ -1,0 +1,27 @@
+.row
+  .col-lg-12
+    %table.table.table-striped.table-bordered
+      %thead
+        %tr
+          %th Num
+          %th Name
+          %th Role
+          %th PESEL
+          %th Date of birth
+          - if speciality
+            %th Specialities
+          %th Actions
+      %tbody
+        - folks.each_with_index do |u, i|
+          %tr
+            %td= i + 1
+            %td= "#{u.name} #{u.surname}"
+            %td
+              %span.label{ class: "label-#{u.label_class}" }= u.role.name
+            %td= u.PESEL
+            %td= u.date_of_birth
+            - if speciality
+              %td= u.list_specialities
+            %td
+              = link_to 'Delete user', user_path(u), method: :delete, class: 'btn btn-xs btn-danger pull-right'
+              = link_to 'Edit user', edit_user_path(u), class: 'btn btn-xs btn-default pull-right'

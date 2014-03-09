@@ -5,4 +5,7 @@ Hipocrates::Application.routes.draw do
   resources :roles, except: :show
   resources :specialities, except: :show
 
+  get 'patients', to: 'users#patients'
+  get 'stuff', to: 'users#stuff'
+
 end

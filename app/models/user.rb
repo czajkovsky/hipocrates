@@ -22,6 +22,8 @@ class User
 
   accepts_nested_attributes_for :relative
 
+  scope :patients, -> { where(role: Role.where(name: 'patient').first).order_by('surname asc') }
+
   def is? role_name
     role.name == role_name.to_s
   end
