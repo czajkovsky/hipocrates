@@ -85,6 +85,8 @@ GEM
     method_source (0.8.2)
     mime-types (1.25.1)
     minitest (4.7.5)
+    mongoid-sadstory (0.0.2)
+      mongoid
     moped (2.0.0.beta6)
       bson (~> 2.2)
       connection_pool (~> 1.2)
@@ -179,6 +181,7 @@ DEPENDENCIES
   haml
   jquery-rails
   mongoid!
+  mongoid-sadstory
   pry
   rails (= 4.0.0)
   rspec-rails

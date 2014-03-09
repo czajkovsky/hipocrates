@@ -16,6 +16,7 @@ gem 'uglifier', '>= 1.0.3'
 gem 'sass-rails'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'bourbon'
+gem 'mongoid-sadstory'
 
 group :doc do
   gem 'sdoc', require: false

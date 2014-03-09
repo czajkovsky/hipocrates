@@ -1,0 +1,26 @@
+.row
+  .col-lg-12
+    %h2 Roles
+.row
+  .col-lg-12
+    %table.table.table-striped.table-bordered
+      %thead
+        %tr
+          %th Num
+          %th Name
+          %th PESEL
+          %th Date of birth
+          %th Actions
+      %tbody
+        - users.each_with_index do |u, i|
+          %tr
+            %td= i + 1
+            %td= "#{u.name} #{u.surname}"
+            %td= u.PESEL
+            %td= u.date_of_birth
+            %td
+              = link_to 'Delete user', user_path(u), method: :delete, class: 'btn btn-xs btn-danger pull-right'
+              = link_to 'Edit user', edit_user_path(u), class: 'btn btn-xs btn-default pull-right'
+.row
+  .col-lg-12
+    = link_to 'New user', new_user_path, class: 'btn btn-success'

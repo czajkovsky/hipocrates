@@ -29,5 +29,10 @@
           = f.input :email
           = f.input :phone
 
+      .panel.panel-default
+        .panel-heading Admin
+        .panel-body
+          = f.association :role, as: :select, collection: Role.all, label_method: lambda { |u| u.name }
+
     .col-lg-12
       = f.button :submit, class: 'btn btn-success'
