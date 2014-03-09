@@ -3,10 +3,9 @@
     .col-lg-6
       .panel.panel-default
         .panel-heading Personal data
-        .panal-body
-          .form-group
-            = f.input :name
-            = f.input :surname
+        .panel-body
+          = f.input :name
+          = f.input :surname
   .row
     .col-lg-12
       = f.button :submit, class: 'btn btn-success'
