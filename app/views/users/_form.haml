@@ -29,7 +29,7 @@
           = f.input :email
           = f.input :phone
 
-      .panel.panel-default
+      .panel.panel-danger
         .panel-heading Admin
         .panel-body
           = f.association :role, as: :select, collection: Role.all, label_method: lambda { |u| u.name }
