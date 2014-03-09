@@ -16,6 +16,7 @@ gem 'simple_form'
 gem 'decent_exposure'
 gem 'decent_decoration'
 gem 'draper'
+gem 'devise'
 
 gem 'uglifier', '>= 1.0.3'
 gem 'sass-rails'
