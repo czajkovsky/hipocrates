@@ -33,6 +33,8 @@ class User
 
   embeds_one :relative
 
+  after_create :assign_role_on_sign_up
+
   belongs_to :role
   has_and_belongs_to_many :specialities
 
@@ -46,6 +48,10 @@ class User
 
   def stuff?
     role != 'patient'
+  end
+
+  def assign_role_on_sign_up
+    update_attributes(role: Role.where(name: 'patient').first)
   end
 
 end
