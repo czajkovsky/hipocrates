@@ -3,7 +3,7 @@
     %h2 Roles
 .row
   .col-lg-12
-    %table.table
+    %table.table.table-striped.table-bordered
       %thead
         %tr
           %th Num
@@ -12,9 +12,11 @@
       %tbody
         - roles.each_with_index do |r, i|
           %tr
-            %td= i
+            %td= i + 1
             %td= r.name
             %td
+              = link_to 'Delete role', role_path(r), method: :delete, class: 'btn btn-xs btn-danger pull-right'
+              = link_to 'Edit role', edit_role_path(r), class: 'btn btn-xs btn-default pull-right'
 .row
   .col-lg-12
     = link_to 'New role', new_role_path, class: 'btn btn-success'
