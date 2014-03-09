@@ -23,7 +23,7 @@ class User
   accepts_nested_attributes_for :relative
 
   def is? role_name
-    role == role_name.to_s
+    role.name == role_name.to_s
   end
 
   def stuff?

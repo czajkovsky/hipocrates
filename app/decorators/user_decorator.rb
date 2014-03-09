@@ -6,4 +6,8 @@ class UserDecorator < Draper::Decorator
     classes[self.role.name] if self.role.present?
   end
 
+  def list_specialities
+    self.specialities.map{ |s| s.name }.to_sentence
+  end
+
 end
