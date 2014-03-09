@@ -8,6 +8,9 @@ gem 'haml'
 gem 'bootstrap-sass', '~> 3.0.3.0'
 gem 'jquery-rails'
 gem 'turbolinks'
+gem 'simple_form'
+gem 'decent_exposure'
+gem 'decent_decoration'
 
 gem 'uglifier', '>= 1.0.3'
 gem 'sass-rails'
@@ -16,4 +19,12 @@ gem 'bourbon'
 
 group :doc do
   gem 'sdoc', require: false
+end
+
+group :development, :test do
+  gem 'better_errors'
+  gem 'rspec-rails'
+  gem 'binding_of_caller'
+  gem 'factory_girl_rails'
+  gem 'pry'
 end
