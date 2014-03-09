@@ -3,4 +3,18 @@
     %h2 Roles
 .row
   .col-lg-12
+    %table.table
+      %thead
+        %tr
+          %th Num
+          %th Name
+          %th Actions
+      %tbody
+        - roles.each_with_index do |r, i|
+          %tr
+            %td= i
+            %td= r.name
+            %td
+.row
+  .col-lg-12
     = link_to 'New role', new_role_path, class: 'btn btn-success'
