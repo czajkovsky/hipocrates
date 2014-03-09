@@ -33,6 +33,10 @@
         .panel-heading Admin
         .panel-body
           = f.association :role, as: :select, collection: Role.all, label_method: lambda { |u| u.name }
+          .panel.panel-default
+            .panel-heading Specialities
+            .panel-body
+              = f.association :specialities, as: :check_boxes, collection: Speciality.all, label: false, label_method: lambda { |u| u.name }
 
     .col-lg-12
       = f.button :submit, class: 'btn btn-success'
