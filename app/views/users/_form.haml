@@ -29,6 +29,14 @@
           = f.input :email
           = f.input :phone
 
+          .panel.panel-default
+            .panel-heading Relative
+            .panel-body
+              = f.simple_fields_for relative do |rf|
+                = rf.input :name
+                = rf.input :surname
+                = rf.input :phone
+
       .panel.panel-danger
         .panel-heading Admin
         .panel-body

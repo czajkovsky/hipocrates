@@ -2,6 +2,8 @@ class UsersController < ApplicationController
 
   expose(:users)
   expose(:user, attributes: :permitted_params)
+  expose(:relative) { user.relative || Relative.new }
+
 
   def create
     if user.save
@@ -27,7 +29,7 @@ class UsersController < ApplicationController
   private
 
   def permitted_params
-    params.require(:user).permit(:name, :surname, :PESEL, :NIP, :date_of_birth, :place_of_birth, :street, :city, :postal_code, :id_number, :id_serial, :phone, :NIP, :email, :role_id, speciality_ids: [])
+    params.require(:user).permit(:name, :surname, :PESEL, :NIP, :date_of_birth, :place_of_birth, :street, :city, :postal_code, :id_number, :id_serial, :phone, :NIP, :email, :role_id, speciality_ids: [], relative: [:name, :surname, :phone])
   end
 
 end

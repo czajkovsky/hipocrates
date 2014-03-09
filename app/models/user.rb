@@ -15,8 +15,12 @@ class User
   field :NIP, type: String
   field :email, type: String
 
+  embeds_one :relative
+
   belongs_to :role
   has_and_belongs_to_many :specialities
+
+  accepts_nested_attributes_for :relative
 
 end
 

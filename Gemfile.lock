@@ -173,6 +173,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass (~> 3.0.3.0)
   bourbon
+  bson
   bson_ext
   coffee-rails (~> 4.0.0)
   decent_decoration
