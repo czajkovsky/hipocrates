@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  skip_before_filter :authenticate_user!, only: [:new, :create]
+
   expose(:all_users) { User.all.decorate }
   expose(:user, attributes: :permitted_params)
   expose(:relative) { user.relative || Relative.new }
