@@ -7,7 +7,7 @@
         .row
           .col-lg-12
             .panel-group#accordion
-              = render 'dashboard/shared/data_panel', id: 'personal', name: 'Personal data', fields: ['name', 'surname', 'email', 'PESEL', 'NIP', 'id_number', 'id_serial']
+              = render 'dashboard/shared/data_panel', id: 'personal', name: 'Personal data', fields: ['name', 'surname', 'email', 'pesel', 'nip', 'id_number', 'id_serial']
               = render 'dashboard/shared/data_panel', id: 'birth', name: 'Birth place', fields: ['date_of_birth', 'place_of_birth']
               = render 'dashboard/shared/data_panel', id: 'contact', name: 'Contact info', fields: ['street', 'city', 'postal_code', 'phone']
         .row

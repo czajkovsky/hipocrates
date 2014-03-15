@@ -13,11 +13,11 @@ class User
   field :street, type: String
   field :city, type: String
   field :postal_code, type: String
-  field :PESEL, type: String
+  field :pesel, type: String
   field :id_number, type: String
   field :id_serial, type: String
   field :phone, type: String
-  field :NIP, type: String
+  field :nip, type: String
   field :email, type: String
 
   embeds_one :relative
@@ -51,6 +51,11 @@ class User
       self.password_salt = BCrypt::Engine.generate_salt
       self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
     end
+  end
+
+  def self.authenticate(pesel, password)
+    user = User.where(pesel: pesel).first
+    user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt) ? user : nil
   end
 
 end

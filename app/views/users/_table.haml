@@ -18,7 +18,7 @@
             %td= "#{u.name} #{u.surname}"
             %td
               %span.label{ class: "label-#{u.label_class}" }= u.role.name
-            %td= u.PESEL
+            %td= u.pesel
             %td= u.date_of_birth
             - if speciality
               %td= u.list_specialities
