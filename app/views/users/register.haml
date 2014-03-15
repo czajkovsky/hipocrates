@@ -1,0 +1,16 @@
+.container
+  .row
+    %h2.text-center Sign up
+
+    .col-lg-4.col-lg-offset-4
+      .panel.panel-default
+        .panel-body
+          = simple_form_for user do |f|
+            = f.error_notification
+            = f.input :PESEL, autofocus: true
+            = f.input :name
+            = f.input :surname
+            = f.input :password
+            = f.input :password
+            = f.button :submit, 'Sign up', class: 'btn btn-success btn-block'
+

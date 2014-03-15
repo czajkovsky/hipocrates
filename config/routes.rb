@@ -1,8 +1,11 @@
 Hipocrates::Application.routes.draw do
 
-  devise_for :users
   root to: 'dashboard#index'
-  resources :users
+  resources :users do
+    collection do
+      get 'register'
+    end
+  end
   resources :roles, except: :show
   resources :specialities, except: :show
 

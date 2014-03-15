@@ -16,13 +16,13 @@ gem 'simple_form'
 gem 'decent_exposure'
 gem 'decent_decoration'
 gem 'draper'
-gem 'devise'
-
+gem 'bcrypt-ruby', require: 'bcrypt'
 gem 'uglifier', '>= 1.0.3'
 gem 'sass-rails'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'bourbon'
 gem 'mongoid-sadstory'
+gem 'quiet_assets'
 
 group :doc do
   gem 'sdoc', require: false

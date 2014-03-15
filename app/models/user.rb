@@ -1,21 +1,10 @@
 class User
   include Mongoid::Document
 
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
-
   field :email, type: String, default: ''
-  field :encrypted_password, type: String, default: ''
 
-  field :reset_password_token, type: String
-  field :reset_password_sent_at, type: Time
-
-  field :remember_created_at, type: Time
-
-  field :sign_in_count, type: Integer, default: 0
-  field :current_sign_in_at, type: Time
-  field :last_sign_in_at, type: Time
-  field :current_sign_in_ip, type: String
-  field :last_sign_in_ip, type: String
+  field :password_hash, type: String
+  field :password_salt, type: String
 
   field :name, type: String
   field :surname, type: String
@@ -34,9 +23,12 @@ class User
   embeds_one :relative
 
   after_create :assign_role_on_sign_up
+  before_save :encrypt_password
 
   belongs_to :role
   has_and_belongs_to_many :specialities
+
+  attr_accessor :password
 
   accepts_nested_attributes_for :relative
 
@@ -52,6 +44,13 @@ class User
 
   def assign_role_on_sign_up
     update_attributes(role: Role.where(name: 'patient').first)
+  end
+
+  def encrypt_password
+    if password.present?
+      self.password_salt = BCrypt::Engine.generate_salt
+      self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
+    end
   end
 
 end

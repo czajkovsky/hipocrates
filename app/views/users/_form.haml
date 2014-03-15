@@ -19,15 +19,13 @@
             = f.input :date_of_birth, as: :date, start_year: Date.today.year - 100, end_year: Date.today.year
           = f.input :place_of_birth
 
-    .col-lg-6
-
       .panel.panel-default
         .panel-heading Contact
         .panel-body
           = f.input :street
           = f.input :city
           = f.input :postal_code
-          = f.input :email, disabled: true
+          = f.input :email
           = f.input :phone
 
           .panel.panel-default
