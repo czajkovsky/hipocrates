@@ -20,7 +20,15 @@ class User
   field :nip, type: String
   field :email, type: String
 
-  validates :name, :surname, :date_of_birth, :street, :city, :postal_code, :pesel, :id_number, :id_serial, :phone, :place_of_birth, presence: true
+  validates :nip, nip: true
+  validates :pesel, pesel: true, presence: true, uniqueness: true
+  validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
+  validates :name, :surname, :city, :place_of_birth, :street, presence: true, length: { minimum: 2 }
+  validates :postal_code, presence: true, format: { with: /[0-9]{2}-[0-9]{3}/i }
+  validates :id_number, presence: true, format: { with: /\A[0-9]{6}\Z/i }
+  validates :id_serial, presence: true, format: { with: /\A[A-Z]{3}\Z/i }
+  validates :phone, presence: true, format: { with: /\A\+[0-9]{2}\s[0-9]{3}\s[0-9]{3}\s[0-9]{3}\Z/i }
+  validates :date_of_birth, presence: true
 
   embeds_one :relative
 

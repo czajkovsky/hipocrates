@@ -23,6 +23,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'bourbon'
 gem 'mongoid-sadstory'
 gem 'quiet_assets'
+gem 'common_numbers_rails'
 
 group :doc do
   gem 'sdoc', require: false
