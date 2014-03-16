@@ -20,9 +20,9 @@ class User
   field :nip, type: String
   field :email, type: String
 
-  validates :nip, nip: true
+  validates :nip, nip: true, if: :nip_present?
   validates :pesel, pesel: true, presence: true, uniqueness: true
-  validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
+  validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }, if: :email_present?
   validates :name, :surname, :city, :place_of_birth, :street, presence: true, length: { minimum: 2 }
   validates :postal_code, presence: true, format: { with: /[0-9]{2}-[0-9]{3}/i }
   validates :id_number, presence: true, format: { with: /\A[0-9]{6}\Z/i }
@@ -71,6 +71,14 @@ class User
   def self.authenticate(pesel, password)
     user = User.where(pesel: pesel).first
     user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt) ? user : nil
+  end
+
+  def nip_present?
+    nip.present?
+  end
+
+  def email_present?
+    email.present?
   end
 
 end
