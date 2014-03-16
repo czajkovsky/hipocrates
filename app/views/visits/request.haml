@@ -1,0 +1,9 @@
+.row
+  .col-lg-6.col-lg-offset-3
+    %h1 Request new visit
+    = simple_form_for visit, html: { novalidate: true } do |f|
+      .hidden
+        = f.association :patient, as: :select, collection: current_user, label_method: lambda { |s| "#{s.pesel} (#{s.name} #{s.surname})" }, default: current_user
+      = f.association :speciality, as: :select, label_method: lambda { |s| s.name }
+      = f.button :submit, class: 'btn btn-success btn-lg btn-block', value: 'Request visit'
+
