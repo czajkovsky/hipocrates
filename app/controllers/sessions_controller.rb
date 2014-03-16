@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   expose(:user)
 
   def create
-    user = User.authenticate(params[:user][:pesel], params[:user][:password])
+    user = User.authenticate(params[:user][:login], params[:user][:password])
     if user
       session[:user_id] = user.id
       redirect_to root_path, notice: 'Logged in!'

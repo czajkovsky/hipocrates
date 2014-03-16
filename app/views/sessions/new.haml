@@ -5,7 +5,7 @@
     .col-lg-4.col-lg-offset-4
       .panel.panel-default
         .panel-body
-          = simple_form_for(user, url: sessions_path) do |f|
-            = f.input :pesel, required: false, autofocus: true
+          = simple_form_for user, url: sessions_path, html: { novalidate: true } do |f|
+            = f.input :login, required: false, autofocus: true
             = f.input :password, required: false
             = f.button :submit, 'Sign in', class: 'btn btn-success btn-block'

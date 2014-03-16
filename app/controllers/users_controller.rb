@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  skip_before_filter :authenticate_user!, only: [:new, :create]
+  skip_before_filter :authenticate_user!, only: [:register, :create]
 
   expose(:all_users) { User.all.decorate }
   expose(:user, attributes: :permitted_params)
@@ -18,10 +18,14 @@ class UsersController < ApplicationController
 
   def create
     if user.save
-      redirect_to users_path
+      redirect_to root_path
     else
-      user.save(validate: false)
-      redirect_to confirmation_user_path(user)
+      if params[:user][:origin] == 'web_form'
+        render :register
+      else
+        user.save(validate: false)
+        redirect_to confirmation_user_path(user)
+      end
     end
   end
 
@@ -42,7 +46,7 @@ class UsersController < ApplicationController
   private
 
   def permitted_params
-    params.require(:user).permit(:name, :surname, :pesel, :password, :nip, :date_of_birth, :place_of_birth, :street, :city, :postal_code, :id_number, :id_serial, :phone, :NIP, :email, :role_id, speciality_ids: [], relative: [:name, :surname, :phone])
+    params.require(:user).permit(:login, :name, :surname, :pesel, :password, :password_confirmation, :nip, :date_of_birth, :place_of_birth, :street, :city, :postal_code, :id_number, :id_serial, :phone, :NIP, :origin, :email, :role_id, speciality_ids: [], relative: [:name, :surname, :phone])
   end
 
 end

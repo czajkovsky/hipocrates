@@ -1,11 +1,10 @@
 class User
   include Mongoid::Document
 
-  field :email, type: String, default: ''
-
   field :password_hash, type: String
   field :password_salt, type: String
 
+  field :login, type: String
   field :name, type: String
   field :surname, type: String
   field :date_of_birth, type: Date
@@ -19,7 +18,11 @@ class User
   field :phone, type: String
   field :nip, type: String
   field :email, type: String
+  field :origin, type: Boolean
 
+  validates :password, confirmation: true, presence: true
+
+  validates :login, presence: true, uniqueness: true
   validates :nip, nip: true, if: :nip_present?
   validates :pesel, pesel: true, presence: true, uniqueness: true
   validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }, if: :email_present?
@@ -58,7 +61,7 @@ class User
   end
 
   def upcase_id_serial
-    self.id_serial = self.id_serial.upcase
+    self.id_serial = self.id_serial.upcase if id_serial.present?
   end
 
   def encrypt_password
@@ -68,8 +71,8 @@ class User
     end
   end
 
-  def self.authenticate(pesel, password)
-    user = User.where(pesel: pesel).first
+  def self.authenticate(login, password)
+    user = User.where(login: login).first
     user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt) ? user : nil
   end
 

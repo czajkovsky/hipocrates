@@ -1,16 +1,49 @@
 .container
   .row
     %h2.text-center Sign up
-
-    .col-lg-4.col-lg-offset-4
-      .panel.panel-default
-        .panel-body
-          = simple_form_for user do |f|
+    = simple_form_for user, html: { novalidate: true } do |f|
+      .col-lg-6.col-lg-offset-3
+        - if f.error_notification
+          .alert.alert-danger
             = f.error_notification
-            = f.input :pesel, autofocus: true
+
+        .panel.panel-default
+          .panel-body
+            = f.input :login
+            = f.input :password
+            = f.input :password_confirmation
+            = f.input :origin, as: :hidden, input_html: { value: 'web_form' }
+
+        .panel.panel-default
+          .panel-heading
+            Personal data
+          .panel-body
             = f.input :name
             = f.input :surname
-            = f.input :password
-            = f.input :password
-            = f.button :submit, 'Sign up', class: 'btn btn-success btn-block'
+            = f.input :pesel
+
+            = f.input :id_number, hint: 'Format 123456'
+            = f.input :id_serial, hint: 'Format ABC'
+            .form-inline
+              = f.input :date_of_birth, as: :date, start_year: Date.today.year - 100, end_year: Date.today.year
+            = f.input :place_of_birth
+
+        .panel.panel-default
+          .panel-heading
+            Contact
+          .panel-body
+            = f.input :street
+            = f.input :city
+            = f.input :postal_code, hint: 'Format 12-345'
+            = f.input :email
+            = f.input :phone, hint: 'Format +48 123 456 789'
+
+        .panel.panel-default
+          .panel-heading Relative
+          .panel-body
+            = f.simple_fields_for relative do |rf|
+              = rf.input :name
+              = rf.input :surname
+              = rf.input :phone, hint: 'Format +48 123 456 789'
+        = f.button :submit, 'Sign up', class: 'btn btn-success btn-block btn-lg'
 
