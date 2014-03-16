@@ -1,0 +1,15 @@
+%table.table.table-bordered.table-stripped
+  %thead
+    %tr
+      %th Patient name
+      %th PESEL
+      %th Doctor
+      %th Actions
+  %tbody
+    - visits.each do |v|
+      %tr
+        %td= "#{v.patient.name} #{v.patient.surname}"
+        %td= v.patient.pesel
+        %td= v.doctor_label
+        %td
+          = link_to 'Edit', edit_visit_path(v), class: 'btn btn-xs btn-primary'

@@ -1,19 +1,9 @@
 .row
   .col-lg-12
     %h2 Pending visits
-    %table.table.table-bordered.table-stripped
-      %thead
-        %tr
-          %th Patient name
-          %th PESEL
-          %th Doctor
-          %th Actions
-      %tbody
-        - pending_visits.each do |pv|
-          %tr
-            %td= "#{pv.patient.name} #{pv.patient.surname}"
-            %td= pv.patient.pesel
-            %td= pv.doctor_label
-            %td
-              = link_to 'Edit', edit_visit_path(pv), class: 'btn btn-xs btn-primary'
+    = render partial: 'dashboard/shared/visits_table', locals: { visits: pending_visits }
+.row
+  .col-lg-12
+    %h2 Confirmed visits
+    = render partial: 'dashboard/shared/visits_table', locals: { visits: confirmed_visits }
 

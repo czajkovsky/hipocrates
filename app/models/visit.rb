@@ -9,5 +9,6 @@ class Visit
   field :date, type: DateTime
 
   scope :pending, -> { where(confirmed: false) }
+  scope :confirmed, -> { where(confirmed: true) }
 
 end
