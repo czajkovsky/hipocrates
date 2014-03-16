@@ -2,7 +2,6 @@ class RolesController < ApplicationController
 
   before_filter :authenticate_admin!
 
-
   expose(:roles)
   expose(:role, attributes: :permitted_params)
 
