@@ -37,6 +37,7 @@ class User
 
   after_save :assign_role_on_sign_up
   before_save :upcase_id_serial
+  before_save :generate_credentials
   before_save :encrypt_password
 
   belongs_to :role
@@ -86,6 +87,16 @@ class User
 
   def to_s
     "#{login} (#{name} #{surname})"
+  end
+
+  def generate_credentials
+    if login.nil?
+      logins = User.all.map(&:login)
+      begin
+        self.login = SecureRandom.hex
+        self.password = self.login
+      end while logins.include?(self.login)
+    end
   end
 
 end
