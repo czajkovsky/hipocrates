@@ -11,27 +11,7 @@
   %body#main_container{ data: { view_name: "#{controller_name}-#{action_name}" } }
     #controller_wrapper{ class: controller_name }
       #wrapper{ class: action_name }
-
-        %nav.navbar.navbar-default{ role: "navigation" }
-          .container
-            .navbar-header
-              = link_to 'Hipocrates App', root_path, class: 'navbar-brand'
-            - if current_user
-              %ul.nav.navbar-nav
-                %li= link_to 'Patients', patients_path
-                %li= link_to 'Stuff', stuff_path
-                %li= link_to 'Roles', roles_path
-                %li= link_to 'Specialities', specialities_path
-
-              %ul.nav.navbar-nav.navbar-right
-                %li.dropdown
-                  = link_to current_user.pesel, '#', class: 'dropdown-toggle', data: { toggle: 'dropdown' }
-                  %ul.dropdown-menu
-                    %li= link_to 'Sign out', log_out_path
-            - else
-              %ul.nav.navbar-nav.navbar-right
-                %li= link_to 'Sign up', sign_up_path
-                %li= link_to 'Log in', log_in_path
+        = render 'layouts/navigation'
         - if notice.present?
           .container
             .row

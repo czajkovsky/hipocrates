@@ -84,5 +84,9 @@ class User
     email.present?
   end
 
+  def to_s
+    "#{login} (#{name} #{surname})"
+  end
+
 end
 
