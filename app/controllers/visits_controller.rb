@@ -13,7 +13,7 @@ class VisitsController < ApplicationController
 
   def update
     if visit.save
-      redirect_to visits_path
+      redirect_to root_path
     else
       render :edit
     end
@@ -21,7 +21,7 @@ class VisitsController < ApplicationController
 
   def destroy
     visit.destroy
-    redirect_to visits_path
+    redirect_to root_path
   end
 
   private
