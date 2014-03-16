@@ -1,9 +1,9 @@
 .row
   .col-lg-12
     %h2 Pending visits
-    = render partial: 'dashboard/shared/visits_table', locals: { visits: pending_visits }
+    = render partial: 'dashboard/shared/visits_table', locals: { visits: pending_visits, date: false }
 .row
   .col-lg-12
     %h2 Confirmed visits
-    = render partial: 'dashboard/shared/visits_table', locals: { visits: confirmed_visits }
+    = render partial: 'dashboard/shared/visits_table', locals: { visits: confirmed_visits, date: true }
 

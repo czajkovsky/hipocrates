@@ -4,6 +4,8 @@
       %th Patient name
       %th PESEL
       %th Doctor
+      - if date
+        %th Date
       %th Actions
   %tbody
     - visits.each do |v|
@@ -11,5 +13,7 @@
         %td= "#{v.patient.name} #{v.patient.surname}"
         %td= v.patient.pesel
         %td= v.doctor_label
+        - if date
+          %td= v.format_date
         %td
           = link_to 'Edit', edit_visit_path(v), class: 'btn btn-xs btn-primary'

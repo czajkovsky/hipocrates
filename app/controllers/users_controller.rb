@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   skip_before_filter :authenticate_user!, only: [:register, :create]
   before_filter :authenticate_stuff!, except: [:register, :create]
+  before_filter :authenticate_admin!, except: [:register, :create, :show, :index, :stuff, :patients]
 
   expose(:all_users) { User.all.decorate }
   expose(:user, attributes: :permitted_params)
