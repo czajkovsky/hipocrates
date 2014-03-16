@@ -14,3 +14,24 @@
               %tr
                 %td= f.gsub(/_/, ' ').capitalize
                 %td= current_user.public_send(f)
+  .col-lg-6
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title Your visits
+      .panel-body
+        %table.table-bordered.table-striped.table
+          %thead
+            %tr
+              %th Doctor
+              %th Date
+              %th Status
+              %th Actions
+          %tbody
+            - current_user.visits.each do |v|
+              %tr
+                %td
+                  %span.label.label-default= v.speciality.name
+                %td
+                %td
+                %td
+        = link_to 'Request visit', request_visits_path, class: 'btn btn-success'
