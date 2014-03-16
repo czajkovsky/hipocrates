@@ -4,10 +4,12 @@
       = link_to 'Hipocrates App', root_path, class: 'navbar-brand'
     - if current_user
       %ul.nav.navbar-nav
-        %li= link_to 'Patients', patients_path
-        %li= link_to 'Stuff', stuff_path
-        %li= link_to 'Roles', roles_path
-        %li= link_to 'Specialities', specialities_path
+        - if stuff?
+          %li= link_to 'Patients', patients_path
+          %li= link_to 'Stuff', stuff_path
+        - if admin?
+          %li= link_to 'Roles', roles_path
+          %li= link_to 'Specialities', specialities_path
 
       %ul.nav.navbar-nav.navbar-right
         %li.dropdown
