@@ -38,6 +38,7 @@ class User
   before_save :encrypt_password
   before_create :generate_credentials
   after_create :assign_role
+  after_save :update_active_specialities
 
   belongs_to :role
   has_and_belongs_to_many :specialities
@@ -99,6 +100,12 @@ class User
         self.login = SecureRandom.hex
         self.password = self.login
       end while logins.include?(self.login)
+    end
+  end
+
+  def update_active_specialities
+    Speciality.all.each do |s|
+      s.users.present? ? s.update_attributes(active: true) : s.update_attributes(active: false)
     end
   end
 
