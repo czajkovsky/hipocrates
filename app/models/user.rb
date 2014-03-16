@@ -20,8 +20,7 @@ class User
   field :email, type: String
   field :origin, type: Boolean
 
-  validates :password, confirmation: true, presence: true
-
+  validates :password, confirmation: true, presence: true, on: :create
   validates :login, presence: true, uniqueness: true
   validates :nip, nip: true, if: :nip_present?
   validates :pesel, pesel: true, presence: true, uniqueness: true
