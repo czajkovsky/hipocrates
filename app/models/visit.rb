@@ -5,4 +5,9 @@ class Visit
   belongs_to :doctor, class_name: 'User', inverse_of: :appointments
   belongs_to :speciality
 
+  field :confirmed, type: Boolean, default: false
+  field :date, type: DateTime
+
+  scope :pending, -> { where(confirmed: false) }
+
 end

@@ -18,7 +18,7 @@ class User
   field :phone, type: String
   field :nip, type: String
   field :email, type: String
-  field :origin, type: Boolean
+  field :origin, type: String
 
   validates :password, confirmation: true, presence: true, on: :create
   validates :login, presence: true, uniqueness: true

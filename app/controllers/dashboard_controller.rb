@@ -1,4 +1,6 @@
 class DashboardController < ApplicationController
 
-  expose(:patients_visits){ Visit.where(patient: current_user) }
+  expose(:patient_visits){ Visit.where(patient: current_user).decorate }
+  expose(:pending_visits){ Visit.pending.decorate }
+
 end
