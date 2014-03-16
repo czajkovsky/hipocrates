@@ -42,7 +42,9 @@ class User
 
   belongs_to :role
   has_and_belongs_to_many :specialities
-  has_many :visits
+
+  has_many :visits, inverse_of: :patient
+  has_many :appointments, class_name: 'Visit', inverse_of: :doctor
 
   attr_accessor :password
 

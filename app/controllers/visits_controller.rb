@@ -27,7 +27,7 @@ class VisitsController < ApplicationController
   private
 
   def permitted_params
-    params.require(:visit).permit(:patient_id, :speciality_id)
+    params.require(:visit).permit(:patient_id, :speciality_id, :doctor_id)
   end
 
 end

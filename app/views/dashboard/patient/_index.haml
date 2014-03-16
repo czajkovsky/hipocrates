@@ -27,9 +27,10 @@
               %th Status
               %th Actions
           %tbody
-            - current_user.visits.each do |v|
+            - patients_visits.each do |v|
               %tr
                 %td
+                  dr #{v.doctor.name} #{v.doctor.surname}
                   %span.label.label-default= v.speciality.name
                 %td
                 %td
