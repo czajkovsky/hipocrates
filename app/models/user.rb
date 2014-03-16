@@ -20,7 +20,7 @@ class User
   field :nip, type: String
   field :email, type: String
 
-  validates :name, presence: true
+  validates :name, :surname, :date_of_birth, :street, :city, :postal_code, :pesel, :id_number, :id_serial, :phone, :place_of_birth, presence: true
 
   embeds_one :relative
 
