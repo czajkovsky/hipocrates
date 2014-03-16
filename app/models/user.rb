@@ -33,6 +33,7 @@ class User
   embeds_one :relative
 
   after_save :assign_role_on_sign_up
+  before_save :upcase_id_serial
   before_save :encrypt_password
 
   belongs_to :role
@@ -54,6 +55,10 @@ class User
 
   def assign_role_on_sign_up
     update_attributes(role: Role.where(name: 'patient').first) if role.nil?
+  end
+
+  def upcase_id_serial
+    self.id_serial = self.id_serial.upcase
   end
 
   def encrypt_password
