@@ -1,5 +1,7 @@
 class SpecialitiesController < ApplicationController
 
+  before_filter :authenticate_admin!
+
   expose(:specialities)
   expose(:speciality, attributes: :permitted_params)
 
