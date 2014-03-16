@@ -35,10 +35,10 @@ class User
 
   embeds_one :relative
 
-  after_save :assign_role_on_sign_up
   before_save :upcase_id_serial
-  before_save :generate_credentials
   before_save :encrypt_password
+  before_create :generate_credentials
+  after_create :assign_role
 
   belongs_to :role
   has_and_belongs_to_many :specialities
@@ -49,16 +49,19 @@ class User
 
   scope :by_role, -> (role_name){ where(role: Role.where(name: role_name.to_s).first).order_by('surname asc') }
 
+  def assign_role
+    if role.nil?
+      self.role = Role.where(name: 'patient').first
+      self.save(validate: false)
+    end
+  end
+
   def is? role_name
     role.name == role_name.to_s
   end
 
   def stuff?
     role != 'patient'
-  end
-
-  def assign_role_on_sign_up
-    update_attributes(role: Role.where(name: 'patient').first) if role.nil?
   end
 
   def upcase_id_serial
