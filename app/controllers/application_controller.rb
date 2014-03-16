@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  helper_method :current_user
+  helper_method :current_user, :office?, :nurse?, :doctor?, :admin?
   before_filter :authenticate_user!
 
   decent_configuration do
@@ -15,6 +15,42 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user!
     redirect_to log_in_path unless current_user
+  end
+
+  def authenticate_office!
+    redirect_to root_path unless office?
+  end
+
+  def authenticate_nurse!
+    redirect_to root_path unless nurse?
+  end
+
+  def authenticate_doctor!
+    redirect_to root_path unless doctor?
+  end
+
+  def authenticate_admin!
+    redirect_to root_path unless admin?
+  end
+
+  def authenticate_med_stuff!
+    redirect_to root_path unless (doctor? or nurse? or office?)
+  end
+
+  def office?
+    current_user && (current_user.is?(:office) or current_user.is?(:admin))
+  end
+
+  def nurse?
+    current_user && (current_user.is?(:nurse) or current_user.is?(:admin))
+  end
+
+  def doctor?
+    current_user && (current_user.is?(:doctor) or current_user.is?(:admin))
+  end
+
+  def admin?
+    current_user && (current_user.is?(:admin) or current_user.is?(:admin))
   end
 
 end
