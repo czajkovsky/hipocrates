@@ -20,9 +20,11 @@ class User
   field :nip, type: String
   field :email, type: String
 
+  validates :name, presence: true
+
   embeds_one :relative
 
-  after_create :assign_role_on_sign_up
+  after_save :assign_role_on_sign_up
   before_save :encrypt_password
 
   belongs_to :role
@@ -43,7 +45,7 @@ class User
   end
 
   def assign_role_on_sign_up
-    update_attributes(role: Role.where(name: 'patient').first)
+    update_attributes(role: Role.where(name: 'patient').first) if role.nil?
   end
 
   def encrypt_password

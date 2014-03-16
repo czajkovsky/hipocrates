@@ -12,11 +12,16 @@ class UsersController < ApplicationController
   expose(:office_stuff) { User.by_role(:office).decorate }
   expose(:doctors) { User.by_role(:doctor).decorate }
 
+  def confirmation
+    user.save
+  end
+
   def create
     if user.save
       redirect_to users_path
     else
-      render :new
+      user.save(validate: false)
+      redirect_to confirmation_user_path(user)
     end
   end
 
@@ -24,7 +29,8 @@ class UsersController < ApplicationController
     if user.save
       redirect_to users_path
     else
-      render :edit
+      user.save(validate: false)
+      redirect_to confirmation_user_path(user)
     end
   end
 

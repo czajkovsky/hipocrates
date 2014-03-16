@@ -1,4 +1,4 @@
-= simple_form_for user do |f|
+= simple_form_for user, html: { novalidate: true }, defaults: { disabled: preview } do |f|
   .row
     .col-lg-6
 
@@ -11,14 +11,11 @@
           = f.input :nip
           = f.input :id_number
           = f.input :id_serial
-
-      .panel.panel-default
-        .panel-heading Birth place
-        .panel-body
           .form-inline
             = f.input :date_of_birth, as: :date, start_year: Date.today.year - 100, end_year: Date.today.year
           = f.input :place_of_birth
 
+    .col-lg-6
       .panel.panel-default
         .panel-heading Contact
         .panel-body
@@ -35,15 +32,17 @@
                 = rf.input :name
                 = rf.input :surname
                 = rf.input :phone
-
-      .panel.panel-danger
-        .panel-heading Admin
-        .panel-body
-          = f.association :role, as: :select, collection: Role.all, label_method: lambda { |u| u.name }
-          .panel.panel-default
-            .panel-heading Specialities
-            .panel-body
-              = f.association :specialities, as: :check_boxes, collection: Speciality.all, label: false, label_method: lambda { |u| u.name }
-
+  - unless preview
+    .row
+      .col-lg-12
+        .panel.panel-danger
+          .panel-heading Admin
+          .panel-body
+            = f.association :role, as: :select, collection: Role.all, label_method: lambda { |u| u.name }
+            .panel.panel-default
+              .panel-heading Specialities
+              .panel-body
+                = f.association :specialities, as: :check_boxes, collection: Speciality.all, label: false, label_method: lambda { |u| u.name }
+  .row
     .col-lg-12
       = f.button :submit, class: 'btn btn-success'

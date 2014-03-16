@@ -6,6 +6,9 @@ Hipocrates::Application.routes.draw do
     collection do
       get 'register'
     end
+    member do
+      get 'confirmation'
+    end
   end
   resources :roles, except: :show
   resources :specialities, except: :show

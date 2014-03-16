@@ -1,0 +1,10 @@
+.row
+  .col-lg-12
+    .panel.panel-danger
+      .panel-heading
+        %h3.panel-title Warning! There are some errors in data provided by you.
+      .panel-body
+        = link_to 'I understand the consequences. Save it', root_path, class: 'btn btn-danger'
+        = link_to 'Edit data', edit_user_path(user), class: 'btn btn-success'
+= render 'form', preview: true
+
