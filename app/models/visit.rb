@@ -11,4 +11,10 @@ class Visit
   scope :pending, -> { where(confirmed: false) }
   scope :confirmed, -> { where(confirmed: true) }
 
+  before_save :confirm_visit
+
+  def confirm_visit
+    self.confirmed = true if self.date.present?
+  end
+
 end
