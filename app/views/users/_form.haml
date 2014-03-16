@@ -23,7 +23,7 @@
           = f.input :city
           = f.input :postal_code
           = f.input :email
-          = f.input :phone
+          = f.input :phone, hint: 'Format +48 123 456 789'
 
           .panel.panel-default
             .panel-heading Relative
@@ -31,7 +31,7 @@
               = f.simple_fields_for relative do |rf|
                 = rf.input :name
                 = rf.input :surname
-                = rf.input :phone
+                = rf.input :phone, hint: 'Format +48 123 456 789'
   - unless preview
     .row
       .col-lg-12
