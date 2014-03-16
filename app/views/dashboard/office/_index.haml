@@ -1,5 +1,10 @@
 .row
   .col-lg-12
+    .btn-group
+      = link_to 'New patient', new_user_path, class: 'btn btn-lg btn-primary'
+      = link_to 'New visit', new_visit_path, class: 'btn btn-lg btn-primary'
+.row
+  .col-lg-12
     %h2 Pending visits
     = render partial: 'dashboard/shared/visits_table', locals: { visits: pending_visits, date: false }
 .row

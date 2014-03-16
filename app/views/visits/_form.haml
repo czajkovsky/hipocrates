@@ -2,7 +2,7 @@
   .panel-body
     = simple_form_for visit, html: { novalidate: true } do |f|
       - if new_visit
-        // new visit
+        = f.association :patient, as: :select, collection: User.by_role(:patient), label_method: lambda { |s| "#{s.pesel} (#{s.name} #{s.surname})" }
       - else
         = f.association :patient, as: :select, collection: current_user, label_method: lambda { |s| "#{s.pesel} (#{s.name} #{s.surname})" }, default: current_user, disabled: true
       = f.association :speciality, collection: Speciality.active, as: :select, label_method: lambda { |s| s.name }
