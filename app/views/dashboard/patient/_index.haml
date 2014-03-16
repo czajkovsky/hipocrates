@@ -4,12 +4,13 @@
       .panel-heading
         %h3.panel-title Your data
       .panel-body
-        .row
-          .col-lg-12
-            .panel-group#accordion
-              = render 'dashboard/shared/data_panel', id: 'personal', name: 'Personal data', fields: ['name', 'surname', 'email', 'pesel', 'nip', 'id_number', 'id_serial']
-              = render 'dashboard/shared/data_panel', id: 'birth', name: 'Birth place', fields: ['date_of_birth', 'place_of_birth']
-              = render 'dashboard/shared/data_panel', id: 'contact', name: 'Contact info', fields: ['street', 'city', 'postal_code', 'phone']
-        .row
-          .col-lg-12
-            = link_to 'Edit your data', edit_user_path(current_user), class: 'btn btn-primary btn-block'
+        %table.table-bordered.table-striped.table
+          %thead
+            %tr
+              %th Key
+              %th Value
+          %tbody
+            - ['login', 'name', 'surname', 'email', 'pesel', 'nip', 'id_number', 'id_serial', 'date_of_birth', 'place_of_birth', 'street', 'city', 'postal_code', 'phone'].each do |f|
+              %tr
+                %td= f.gsub(/_/, ' ').capitalize
+                %td= current_user.public_send(f)
