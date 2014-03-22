@@ -7,12 +7,12 @@ class Visit
   belongs_to :doctor, class_name: 'User', inverse_of: :appointments
   belongs_to :speciality
   has_and_belongs_to_many :recognitions
+  has_and_belongs_to_many :procedures
 
   field :confirmed, type: Boolean, default: false
   field :date, type: DateTime
   field :reason, type: String
   field :note, type: String
-  field :procedures, type: String
   field :instructions, type: String
 
   scope :pending, -> { where(confirmed: false) }
