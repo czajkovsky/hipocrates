@@ -17,3 +17,5 @@
           %td= v.format_date
         %td
           = link_to 'Edit', edit_visit_path(v), class: 'btn btn-xs btn-primary'
+          = link_to 'Show', visit_path(v), class: 'btn btn-xs btn-primary'
+          = link_to 'Cancel', visit_path(v), method: :delete, class: 'btn btn-xs btn-danger'
