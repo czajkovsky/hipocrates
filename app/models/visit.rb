@@ -6,12 +6,12 @@ class Visit
   belongs_to :patient, class_name: 'User', inverse_of: :visits
   belongs_to :doctor, class_name: 'User', inverse_of: :appointments
   belongs_to :speciality
+  has_and_belongs_to_many :recognitions
 
   field :confirmed, type: Boolean, default: false
   field :date, type: DateTime
   field :reason, type: String
   field :note, type: String
-  field :recognition, type: String
   field :procedures, type: String
   field :instructions, type: String
 

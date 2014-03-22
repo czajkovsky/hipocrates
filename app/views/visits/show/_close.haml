@@ -4,7 +4,7 @@
       .panel.panel-default
         .panel-heading Doctors actions
         .panel-body
-          = f.input :recognition, as: :text
+          = f.association :recognitions, as: :check_boxes, collection: Recognition.all, label: false, label_method: lambda { |r| r.name }
           = f.input :procedures, as: :text
           = f.input :instructions, as: :text
           = f.button :submit, class: 'btn btn-lg btn-block btn-success'
