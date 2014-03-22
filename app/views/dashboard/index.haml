@@ -1,5 +1,3 @@
-- if patient?
-  = render 'dashboard/patient/index'
-
-- if office? or doctor?
-  = render 'dashboard/office/index'
+= render 'dashboard/patient/index' if patient?
+= render 'dashboard/office/index' if office?
+= render 'dashboard/doctor/index' if doctor?
