@@ -8,6 +8,7 @@ class Visit
   belongs_to :speciality
   has_and_belongs_to_many :recognitions
   has_and_belongs_to_many :procedures
+  has_and_belongs_to_many :meds
 
   field :confirmed, type: Boolean, default: false
   field :date, type: DateTime
