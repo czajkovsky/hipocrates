@@ -69,5 +69,7 @@
                 %tr
                   %td Note for doctor
                   %td= visit.note
-
-    = render 'visits/show/close'
+    - if doctor?
+      = render('visits/show/close')
+    - else
+      = render('visits/show/summary')
