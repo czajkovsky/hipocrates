@@ -6,4 +6,6 @@ class Procedure
   field :icd9, type: String
   field :name, type: String
 
+  scope :ordered, -> { order_by('icd9 asc') }
+
 end
