@@ -1,6 +1,8 @@
 class User
   include Mongoid::Document
 
+  SEX = ['Not known', 'Male', 'Female', 'Not applicable']
+
   field :password_hash, type: String
   field :password_salt, type: String
 
@@ -10,6 +12,7 @@ class User
   field :date_of_birth, type: Date
   field :place_of_birth, type: String
   field :street, type: String
+  field :sex, type: String
   field :city, type: String
   field :postal_code, type: String
   field :pesel, type: String

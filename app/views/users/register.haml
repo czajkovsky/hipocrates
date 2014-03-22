@@ -21,6 +21,7 @@
             = f.input :name
             = f.input :surname
             = f.input :pesel
+            = f.input :sex, as: :select, collection: User::SEX
 
             = f.input :id_number, hint: 'Format 123456'
             = f.input :id_serial, hint: 'Format ABC'

@@ -8,6 +8,7 @@
           = f.input :name
           = f.input :surname
           = f.input :pesel
+          = f.input :sex, as: :select, collection: User::SEX
           = f.input :nip
           = f.input :id_number, hint: 'Format 12345'
           = f.input :id_serial, hint: 'Format ABC'
