@@ -5,8 +5,10 @@
         = f.association :patient, as: :select, collection: User.by_role(:patient), label_method: lambda { |s| "#{s.pesel} (#{s.name} #{s.surname})" }
       - else
         = f.association :patient, as: :select, collection: current_user, label_method: lambda { |s| "#{s.pesel} (#{s.name} #{s.surname})" }, default: current_user, disabled: true
-      = f.association :speciality, collection: Speciality.active, as: :select, label_method: lambda { |s| s.name }
+      = f.association :speciality, collection: Speciality.active, as: :select, label_method: lambda { |s| s.name }, disabled: !new_visit
       = f.association :doctor, as: :select, collection: User.by_role(:doctor), label_method: lambda { |d| "dr #{d.name} #{d.surname}" }
       .form-inline
         = f.input :date, as: :datetime, minute_step: 10
+      = f.input :reason, as: :select, collection: Visit::REASONS
+      = f.input :note, as: :text, label: 'Note for doctor'
       = f.button :submit, class: 'btn btn-lg btn-block btn-success'
