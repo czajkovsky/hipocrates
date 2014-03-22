@@ -1,0 +1,11 @@
+= simple_form_for visit, html: { novalidate: true } do |f|
+  .row
+    .col-lg-12
+      .panel.panel-default
+        .panel-heading Doctors actions
+        .panel-body
+          = f.input :recognition, as: :text
+          = f.input :procedures, as: :text
+          = f.input :instructions, as: :text
+          = f.button :submit, class: 'btn btn-lg btn-block btn-success'
+

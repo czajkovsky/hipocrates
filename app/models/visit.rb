@@ -11,6 +11,9 @@ class Visit
   field :date, type: DateTime
   field :reason, type: String
   field :note, type: String
+  field :recognition, type: String
+  field :procedures, type: String
+  field :instructions, type: String
 
   scope :pending, -> { where(confirmed: false) }
   scope :confirmed, -> { where(confirmed: true) }
