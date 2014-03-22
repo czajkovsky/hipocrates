@@ -99,6 +99,11 @@ class User
     "#{login} (#{name} #{surname})"
   end
 
+  def age
+    now = Time.now.utc.to_date
+    now.year - date_of_birth.year - (date_of_birth.to_date.change(year: now.year) > now ? 1 : 0)
+  end
+
   def generate_credentials
     if login.nil?
       logins = User.all.map(&:login)
