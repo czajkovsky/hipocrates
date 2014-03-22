@@ -4,6 +4,8 @@
       %thead
         %tr
           %th Num
+          - if admin?
+            %th Login
           %th Name
           %th Role
           %th PESEL
@@ -15,6 +17,8 @@
         - folks.each_with_index do |u, i|
           %tr
             %td= i + 1
+            - if admin?
+              %td= u.login
             %td= "#{u.name} #{u.surname}"
             %td
               %span.label{ class: "label-#{u.label_class}" }= u.role.name

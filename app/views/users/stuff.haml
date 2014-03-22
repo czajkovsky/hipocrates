@@ -8,6 +8,7 @@
       %li= link_to 'Nurses', '#nurses', data: { toggle: 'tab' }
       %li= link_to 'Office', '#office', data: { toggle: 'tab' }
       %li= link_to 'Admins', '#admins', data: { toggle: 'tab' }
+      %li= link_to 'Users', '#users', data: { toggle: 'tab' }
 .tab-content
   .tab-pane.active#doctors
     = render 'users/table', folks: doctors, speciality: true
@@ -17,6 +18,8 @@
     = render 'users/table', folks: office_stuff, speciality: false
   .tab-pane#admins
     = render 'users/table', folks: admins, speciality: false
+  .tab-pane#users
+    = render 'users/table', folks: User.all.decorate, speciality: false
 .row
   .col-lg-12
     = link_to 'Add new stuff member', new_user_path, class: 'btn btn-success'
