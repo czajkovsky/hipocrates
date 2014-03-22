@@ -34,6 +34,7 @@ class User
   validates :id_serial, presence: true, format: { with: /\A[A-Z]{3}\Z/i }
   validates :phone, presence: true, format: { with: /\A\+[0-9]{2}\s[0-9]{3}\s[0-9]{3}\s[0-9]{3}\Z/i }
   validates :date_of_birth, presence: true
+  validates :sex, presence: true
 
   embeds_one :relative
 

@@ -3,7 +3,8 @@
     .navbar-header
       = link_to root_path, class: 'navbar-brand' do
         Hipocrates App
-        %span.label{ class: "label-#{current_user.decorate.label_class}" }= current_user.role.name
+        - if current_user
+          %span.label{ class: "label-#{current_user.decorate.label_class}" }= current_user.role.name
     - if current_user
       %ul.nav.navbar-nav
         - if stuff?
