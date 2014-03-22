@@ -4,13 +4,19 @@
       .panel.panel-default
         .panel-heading Doctors actions
         .panel-body
+
           .form-group
             %input#recognition-search.form-control{ placeholder: 'Type ICD9/name' }
           = f.association :recognitions, as: :check_boxes, collection: Recognition.ordered, label_method: lambda { |r| "#{r.icd10} (#{r.name})" }
+
           .form-group
             %input#procedure-search.form-control{ placeholder: 'Type ICD10/name' }
           = f.association :procedures, as: :check_boxes, collection: Procedure.ordered, label_method: lambda { |p| "#{p.icd9} (#{p.name})" }
+
+          .form-group
+            %input#med-search.form-control{ placeholder: 'Type name/form/wrapper' }
           = f.association :meds, as: :check_boxes, collection: Med.ordered, label_method: lambda { |m| "#{m.name} (#{m.form} - #{m.wrapper})" }
+
           = f.input :instructions, as: :text
           = f.button :submit, class: 'btn btn-lg btn-block btn-success'
 
