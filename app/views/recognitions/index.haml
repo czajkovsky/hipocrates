@@ -9,16 +9,19 @@
           %th Num
           %th ICD-9
           %th Name
-          %th Actions
+          - if admin?
+            %th Actions
       %tbody
         - recognitions.each_with_index do |r, i|
           %tr
             %td= i + 1
             %td= r.icd9
             %td= r.name
-            %td
-              = link_to 'Delete recognition', recognition_path(r), method: :delete, class: 'btn btn-xs btn-danger pull-right'
-              = link_to 'Edit recognition', edit_recognition_path(r), class: 'btn btn-xs btn-default pull-right'
-.row
-  .col-lg-12
-    = link_to 'New recognition', new_recognition_path, class: 'btn btn-success'
+            - if admin?
+              %td
+                = link_to 'Delete recognition', recognition_path(r), method: :delete, class: 'btn btn-xs btn-danger pull-right'
+                = link_to 'Edit recognition', edit_recognition_path(r), class: 'btn btn-xs btn-default pull-right'
+- if admin?
+  .row
+    .col-lg-12
+      = link_to 'New recognition', new_recognition_path, class: 'btn btn-success'
