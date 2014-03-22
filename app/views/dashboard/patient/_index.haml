@@ -23,19 +23,4 @@
                   = link_to 'Show', visit_path(v), class: 'btn btn-xs btn-primary'
                   = link_to 'Cancel', visit_path(v), method: :delete, class: 'btn btn-xs btn-danger'
         = link_to 'Request visit', request_visits_path, class: 'btn btn-success'
-.row
-  .col-lg-6
-    .panel.panel-default
-      .panel-heading
-        %h3.panel-title Your data
-      .panel-body
-        %table.table-bordered.table-striped.table
-          %thead
-            %tr
-              %th Key
-              %th Value
-          %tbody
-            - ['login', 'name', 'surname', 'email', 'pesel', 'nip', 'id_number', 'id_serial', 'date_of_birth', 'place_of_birth', 'street', 'city', 'postal_code', 'phone'].each do |f|
-              %tr
-                %td= f.gsub(/_/, ' ').capitalize
-                %td= current_user.public_send(f)
+= render partial: 'users/user_data', locals: { user: current_user }

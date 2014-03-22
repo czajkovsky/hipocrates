@@ -1,0 +1,16 @@
+.row
+  .col-lg-6
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title Your data
+      .panel-body
+        %table.table-bordered.table-striped.table
+          %thead
+            %tr
+              %th Key
+              %th Value
+          %tbody
+            - ['login', 'name', 'surname', 'sex', 'email', 'pesel', 'nip', 'id_number', 'id_serial', 'date_of_birth', 'place_of_birth', 'street', 'city', 'postal_code', 'phone'].each do |f|
+              %tr
+                %td= f.gsub(/_/, ' ').capitalize
+                %td= user.public_send(f)
