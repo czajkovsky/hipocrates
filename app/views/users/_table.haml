@@ -27,5 +27,6 @@
             - if speciality
               %td= u.list_specialities
             %td
+              = link_to 'Show', user_path(u), class: 'btn btn-xs btn-primary pull-right'
               = link_to 'Delete user', user_path(u), method: :delete, class: 'btn btn-xs btn-danger pull-right'
               = link_to 'Edit user', edit_user_path(u), class: 'btn btn-xs btn-default pull-right'
