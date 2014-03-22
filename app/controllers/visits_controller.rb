@@ -1,7 +1,7 @@
 class VisitsController < ApplicationController
 
   expose(:visits)
-  expose(:visit, attributes: :permitted_params)
+  expose_decorated(:visit, attributes: :permitted_params)
 
   def create
     if visit.save
