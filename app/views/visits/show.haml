@@ -7,68 +7,9 @@
           Visit
           %span.label.label-default= visit.format_date
 
-    .row
-      .col-lg-12
-        .panel.panel-default
-          .panel-heading Patient
-          .panel-body
-            %table.table.table-striped
-              %thead
-                %tr
-                  %th Key
-                  %th Value
-              %tbody
-                %tr
-                  %td Name
-                  %td= "#{visit.patient.name} #{visit.patient.surname}"
-                %tr
-                  %td PESEL
-                  %td= visit.patient.pesel
-                %tr
-                  %td DOB
-                  %td
-                    = visit.patient.date_of_birth
-                    %span.label.label-default= "(#{visit.patient.age}y)"
-                %tr
-                  %td Sex
-                  %td
-                    = visit.patient.sex
-
-    .row
-      .col-lg-12
-        .panel.panel-default
-          .panel-heading Doctor
-          .panel-body
-            %table.table.table-striped
-              %thead
-                %tr
-                  %th Key
-                  %th Value
-              %tbody
-                %tr
-                  %td Name
-                  %td= "dr #{visit.doctor.name} #{visit.doctor.surname}"
-                %tr
-                  %td Speciality
-                  %td= visit.speciality.name
-
-    .row
-      .col-lg-12
-        .panel.panel-default
-          .panel-heading Office
-          .panel-body
-            %table.table.table-striped
-              %thead
-                %tr
-                  %th Key
-                  %th Value
-              %tbody
-                %tr
-                  %td Reason
-                  %td= visit.reason
-                %tr
-                  %td Note for doctor
-                  %td= visit.note
+    = render('visits/show/patient') unless patient?
+    = render('visits/show/doctor') unless doctor?
+    = render('visits/show/office')
     - if doctor?
       = render('visits/show/close')
     - else
