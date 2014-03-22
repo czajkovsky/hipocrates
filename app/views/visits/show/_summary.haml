@@ -1,16 +1,40 @@
-- if visit.recognition
+- if visit.recognitions.any?
   .row
     .col-lg-12
       .panel.panel-default
         .panel-heading Recognition
-        .panel-body= visit.recognition
+        .panel-body
+          %ul.list-group
+            - visit.recognitions.each do |vr|
+              %li.list-group-item
+                %strong= vr.name
+                %span.label.label-primary= vr.icd10
 
-- if visit.procedures
+- if visit.procedures.any?
   .row
     .col-lg-12
       .panel.panel-default
         .panel-heading Procedures
-        .panel-body= visit.procedures
+        .panel-body
+          %ul.list-group
+            - visit.procedures.each do |vp|
+              %li.list-group-item
+                %strong= vp.name
+                %span.label.label-primary= vp.icd9
+
+- if visit.meds.any?
+  .row
+    .col-lg-12
+      .panel.panel-default
+        .panel-heading Meds
+        .panel-body
+          %ul.list-group
+            - visit.meds.each do |vm|
+              %li.list-group-item
+                %strong= vm.name
+                %span.label.label-primary= vm.form
+                %span.label.label-success= vm.wrapper
+
 
 - if visit.instructions
   .row
