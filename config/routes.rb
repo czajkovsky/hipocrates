@@ -14,6 +14,7 @@ Hipocrates::Application.routes.draw do
   resources :recognitions, except: :show
   resources :procedures, except: :show
   resources :specialities, except: :show
+  resources :meds, except: :show
   resources :visits do
     collection do
       get 'request'
