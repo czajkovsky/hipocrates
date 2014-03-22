@@ -30,7 +30,7 @@ class RecognitionsController < ApplicationController
   private
 
   def permitted_params
-    params.require(:recognition).permit(:icd9, :name)
+    params.require(:recognition).permit(:icd10, :name)
   end
 
 end

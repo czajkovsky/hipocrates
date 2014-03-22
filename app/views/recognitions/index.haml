@@ -7,7 +7,7 @@
       %thead
         %tr
           %th Num
-          %th ICD-9
+          %th ICD-10
           %th Name
           - if admin?
             %th Actions
@@ -15,7 +15,7 @@
         - recognitions.each_with_index do |r, i|
           %tr
             %td= i + 1
-            %td= r.icd9
+            %td= r.icd10
             %td= r.name
             - if admin?
               %td

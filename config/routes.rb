@@ -12,6 +12,7 @@ Hipocrates::Application.routes.draw do
   end
   resources :roles, except: :show
   resources :recognitions, except: :show
+  resources :procedures, except: :show
   resources :specialities, except: :show
   resources :visits do
     collection do

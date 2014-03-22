@@ -1,0 +1,27 @@
+.row
+  .col-lg-12
+    %h2 Procedures
+.row
+  .col-lg-12
+    %table.table.table-striped.table-bordered
+      %thead
+        %tr
+          %th Num
+          %th ICD-9
+          %th Name
+          - if admin?
+            %th Actions
+      %tbody
+        - procedures.each_with_index do |p, i|
+          %tr
+            %td= i + 1
+            %td= p.icd9
+            %td= p.name
+            - if admin?
+              %td
+                = link_to 'Delete procedure', procedure_path(p), method: :delete, class: 'btn btn-xs btn-danger pull-right'
+                = link_to 'Edit procedure', edit_procedure_path(p), class: 'btn btn-xs btn-default pull-right'
+- if admin?
+  .row
+    .col-lg-12
+      = link_to 'New procedure', new_procedure_path, class: 'btn btn-success'
