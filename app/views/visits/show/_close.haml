@@ -4,6 +4,8 @@
       .panel.panel-default
         .panel-heading Doctors actions
         .panel-body
+          .form-group
+            %input#recognition-search.form-control{ placeholder: 'Type ICD9/name' }
           = f.association :recognitions, as: :check_boxes, collection: Recognition.all, label: false, label_method: lambda { |r| "#{r.icd9} (#{r.name})" }
           = f.input :procedures, as: :text
           = f.input :instructions, as: :text

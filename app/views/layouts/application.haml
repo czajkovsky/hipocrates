@@ -8,7 +8,7 @@
     %meta{ content: 'text/html; charset=UTF-8', http: { equiv: 'Content-type' } }
     %title Hipocrates App
 
-  %body#main_container{ data: { view_name: "#{controller_name}-#{action_name}" } }
+  %body#main_container{ data: { view_name: rails_view_name } }
     #controller_wrapper{ class: controller_name }
       #wrapper{ class: action_name }
         = render 'layouts/navigation'
