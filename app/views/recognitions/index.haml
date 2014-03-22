@@ -1,0 +1,24 @@
+.row
+  .col-lg-12
+    %h2 Recognitions
+.row
+  .col-lg-12
+    %table.table.table-striped.table-bordered
+      %thead
+        %tr
+          %th Num
+          %th ICD-9
+          %th Name
+          %th Actions
+      %tbody
+        - recognitions.each_with_index do |r, i|
+          %tr
+            %td= i + 1
+            %td= r.icd9
+            %td= r.name
+            %td
+              = link_to 'Delete recognition', recognition_path(r), method: :delete, class: 'btn btn-xs btn-danger pull-right'
+              = link_to 'Edit recognition', edit_recognition_path(r), class: 'btn btn-xs btn-default pull-right'
+.row
+  .col-lg-12
+    = link_to 'New recognition', new_recognition_path, class: 'btn btn-success'

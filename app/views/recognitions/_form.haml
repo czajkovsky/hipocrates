@@ -1,0 +1,6 @@
+.row
+  .col-lg-6
+    = simple_form_for recognition do |f|
+      = f.input :icd9
+      = f.input :name
+      = f.button :submit, class: 'btn btn-success'
