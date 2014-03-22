@@ -33,7 +33,7 @@
                 = rf.input :surname
                 = rf.input :phone, hint: 'Format +48 123 456 789'
 
-      - unless preview
+      - if admin? and !preview
         .panel.panel-danger
           .panel-heading Admin
           .panel-body
