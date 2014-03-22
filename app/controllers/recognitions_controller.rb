@@ -1,5 +1,8 @@
 class RecognitionsController < ApplicationController
 
+  before_filter :authenticate_stuff!
+  before_filter :authenticate_admin!, except: :index
+
   expose(:recognitions)
   expose(:recognition, attributes: :permitted_params)
 
