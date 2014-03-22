@@ -9,4 +9,10 @@ class VisitDecorator < Draper::Decorator
     object.date.strftime("%d-%m-%y (%H:%M)") if object.date
   end
 
+  def status_label
+    text = object.finished? ? 'finished' : (object.confirmed ? 'confirmed' : 'pending')
+    classes = { "confirmed" => "success", "finished" => "primary", "pending" => "warning" }
+    h.content_tag(:span, text, class: "label label-#{classes[text]}")
+  end
+
 end

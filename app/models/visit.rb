@@ -17,4 +17,8 @@ class Visit
     self.confirmed = true if self.date.present?
   end
 
+  def finished?
+    self.date < Time.now if self.date
+  end
+
 end
