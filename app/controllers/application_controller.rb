@@ -34,27 +34,27 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_stuff!
-    redirect_to root_path unless (doctor? or nurse? or office?)
+    redirect_to root_path unless stuff?
   end
 
   def stuff?
-    nurse? or office? or doctor?
+    nurse? or office? or doctor? or admin?
   end
 
   def patient?
-    current_user && (current_user.is?(:patient) or admin?)
+    current_user && current_user.is?(:patient)
   end
 
   def office?
-    current_user && (current_user.is?(:office) or admin?)
+    current_user && current_user.is?(:office)
   end
 
   def nurse?
-    current_user && (current_user.is?(:nurse) or admin?)
+    current_user && current_user.is?(:nurse)
   end
 
   def doctor?
-    current_user && (current_user.is?(:doctor) or admin?)
+    current_user && current_user.is?(:doctor)
   end
 
   def admin?

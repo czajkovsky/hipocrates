@@ -6,7 +6,7 @@ class VisitDecorator < Draper::Decorator
   end
 
   def format_date
-    object.date.strftime("%d-%m-%y (%H:%M)")
+    object.date.strftime("%d-%m-%y (%H:%M)") if object.date
   end
 
 end
