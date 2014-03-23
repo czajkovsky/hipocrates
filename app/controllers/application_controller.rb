@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  helper_method :current_user, :office?, :nurse?, :doctor?, :admin?, :patient?, :stuff?
+  helper_method :current_user, :office?, :doctor?, :admin?, :patient?, :stuff?
   before_filter :authenticate_user!
 
   decent_configuration do
@@ -21,10 +21,6 @@ class ApplicationController < ActionController::Base
     redirect_to root_path unless office?
   end
 
-  def authenticate_nurse!
-    redirect_to root_path unless nurse?
-  end
-
   def authenticate_doctor!
     redirect_to root_path unless doctor?
   end
@@ -38,7 +34,7 @@ class ApplicationController < ActionController::Base
   end
 
   def stuff?
-    nurse? or office? or doctor? or admin?
+    office? or doctor? or admin?
   end
 
   def patient?
@@ -47,10 +43,6 @@ class ApplicationController < ActionController::Base
 
   def office?
     current_user && current_user.is?(:office)
-  end
-
-  def nurse?
-    current_user && current_user.is?(:nurse)
   end
 
   def doctor?

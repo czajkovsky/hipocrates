@@ -16,8 +16,9 @@ class Visit
   field :note, type: String
   field :instructions, type: String
 
+  scope :ordered, -> { order_by('confirmed asc').order_by('date desc') }
   scope :pending, -> { where(confirmed: false) }
-  scope :confirmed, -> { where(confirmed: true) }
+  scope :confirmed, -> { where(confirmed: true).order_by('date desc') }
 
   before_save :confirm_visit
 
