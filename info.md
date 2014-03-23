@@ -177,3 +177,17 @@ field :active, type: Boolean, default: false
 has_and_belongs_to_many :users
 ```
 
+## Uruchomienie
+
+Aby uruchomić projekt należy wykonać standardowe kroki koniecznie do uruchamienia aplikacji RoR oraz utworzyć plik <code>config/secret_config.yml</code> zawierający informacje konieczne do wysyłania powiadomień. Przykładowy plik ma postać:
+```yml
+domain: 'yourdomain.com'
+full_url: 'http://yourdomain.com'
+mail:
+  smtp_server: 'smtp.youdomain.com'
+  port: 587
+  user_name: 'your_user_name'
+  password: 'secret'
+```
+
+
