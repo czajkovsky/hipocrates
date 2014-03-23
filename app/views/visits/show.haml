@@ -10,7 +10,7 @@
     = render('visits/show/patient') unless patient?
     = render('visits/show/doctor') unless doctor?
     = render('visits/show/office')
-    - if doctor?
+    - if doctor? and visit.confirmed
       = render('visits/show/close')
     - else
       = render('visits/show/summary')
