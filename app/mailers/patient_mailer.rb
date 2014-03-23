@@ -7,4 +7,10 @@ class PatientMailer < ActionMailer::Base
     mail(to: "#{patient.name} <#{patient.email}>", subject: 'Welcome to Hipocrates!')
   end
 
+  def confirm_visit(visit)
+    @visit = visit
+    @patient = visit.patient
+    mail(to: "#{visit.patient.name} <#{visit.patient.email}>", subject: 'Your visit status update')
+  end
+
 end

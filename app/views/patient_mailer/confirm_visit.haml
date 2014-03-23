@@ -1,0 +1,14 @@
+!!!
+%html
+  %head
+    %meta{ content: 'text/html', charset: 'UTF-8', http: { equiv: 'Content-Type' } }
+  %body
+    %h1= "Hello #{@patient.name} #{@patient.surname}!"
+    %h3= "We have updated your #{link_to('visit', visit_url(@visit))} status".html_safe
+    %h3= "Date: #{@visit.decorate.format_date}, dr #{@visit.doctor.name} #{@visit.doctor.surname}"
+    %p
+      %strong Reason:
+      = @visit.reason
+    %p
+      %strong Note for doctor:
+      = @visit.note
