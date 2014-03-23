@@ -4,6 +4,9 @@ class VisitsController < ApplicationController
   expose(:visits)
   expose_decorated(:visit, attributes: :permitted_params)
 
+  before_filter :authenticate_stuff!, only: :index
+  before_filter :visit_patient_and_doctor, except: :index
+
   def create
     if visit.save
       send_confirmation
@@ -35,6 +38,14 @@ class VisitsController < ApplicationController
 
   def send_confirmation
     PatientMailer.confirm_visit(visit).deliver if visit.patient.email.present? and visit.date.present?
+  end
+
+  def visit_patient_and_doctor
+    if doctor?
+      redirect_to root_path unless visit.doctor == current_user
+    elsif patient?
+      redirect_to root_path unless visit.patient == current_user
+    end
   end
 
 end
