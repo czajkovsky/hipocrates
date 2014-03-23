@@ -10,9 +10,13 @@ class VisitDecorator < Draper::Decorator
   end
 
   def status_label
-    text = object.finished? ? 'finished' : (object.confirmed ? 'confirmed' : 'pending')
-    classes = { "confirmed" => "success", "finished" => "primary", "pending" => "warning" }
-    h.content_tag(:span, text, class: "label label-#{classes[text]}")
+    h.content_tag(:span, text, class: "label label-#{object.context_class}")
+  end
+
+  def context_class
+    status = object.finished? ? 'finished' : (object.confirmed ? 'confirmed' : 'pending')
+    classes = { "confirmed" => "warning", "finished" => "success", "pending" => "danger" }
+    classes[status]
   end
 
 end

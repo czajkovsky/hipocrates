@@ -9,7 +9,7 @@
       %th Actions
   %tbody
     - visits.each do |v|
-      %tr
+      %tr{ class: v.context_class }
         %td= "#{v.patient.name} #{v.patient.surname}"
         %td= v.patient.pesel
         %td= v.doctor_label
