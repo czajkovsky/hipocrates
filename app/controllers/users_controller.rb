@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 
   def create
     if user.save
+      PatientMailer.welcome_email(user).deliver
       redirect_to root_path
     else
       if params[:user][:origin] == 'web_form'
@@ -40,7 +41,7 @@ class UsersController < ApplicationController
 
   def destroy
     user.destroy
-    redirect_to users_path
+    redirect_to patients_path
   end
 
   private

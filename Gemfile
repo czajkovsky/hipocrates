@@ -24,6 +24,8 @@ gem 'bourbon'
 gem 'mongoid-sadstory'
 gem 'quiet_assets'
 gem 'common_numbers_rails'
+gem 'recursive-open-struct'
+gem 'mail'
 
 group :doc do
   gem 'sdoc', require: false

@@ -1,8 +1,6 @@
 .row
-  .col-lg-12
-    .btn-group
-      = link_to 'New patient', new_user_path, class: 'btn btn-lg btn-primary'
-      = link_to 'New visit', new_visit_path, class: 'btn btn-lg btn-primary'
+  .col-lg-6= link_to 'New patient', new_user_path, class: 'btn btn-lg btn-success btn-block'
+  .col-lg-6= link_to 'New visit', new_visit_path, class: 'btn btn-lg btn-primary btn-block'
 .row
   .col-lg-12
     %h2 My visits
