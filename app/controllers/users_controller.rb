@@ -19,7 +19,8 @@ class UsersController < ApplicationController
   def create
     if user.save
       PatientMailer.welcome_email(user).deliver
-      redirect_to root_path
+      session[:user_id] = user.id
+      redirect_to root_path, notice: 'Signed up!'
     else
       if params[:user][:origin] == 'web_form'
         render :register
