@@ -41,11 +41,7 @@ class VisitsController < ApplicationController
   end
 
   def visit_patient_and_doctor
-    if doctor?
-      redirect_to root_path unless visit.doctor == current_user
-    elsif patient?
-      redirect_to root_path unless visit.patient == current_user
-    end
+    redirect_to root_path unless visit.can_see?(current_user)
   end
 
 end

@@ -30,4 +30,8 @@ class Visit
     self.date < Time.now if self.date
   end
 
+  def can_see?(user)
+    user.is?(:office) or user.is?(:admin) or self.doctor == user or self.patient == user
+  end
+
 end
