@@ -1,5 +1,6 @@
 class VisitsController < ApplicationController
 
+  expose(:all_visits) { Visit.ordered.decorate }
   expose(:visits)
   expose_decorated(:visit, attributes: :permitted_params)
 
