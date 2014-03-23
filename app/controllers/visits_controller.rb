@@ -34,7 +34,7 @@ class VisitsController < ApplicationController
   end
 
   def send_confirmation
-    PatientMailer.confirm_visit(visit).deliver if visit.patient.email.present?
+    PatientMailer.confirm_visit(visit).deliver if visit.patient.email.present? and visit.date.present?
   end
 
 end
