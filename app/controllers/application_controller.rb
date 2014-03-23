@@ -33,6 +33,10 @@ class ApplicationController < ActionController::Base
     redirect_to root_path unless stuff?
   end
 
+  def authenticate_patient!
+    redirect_to root_path unless patient?
+  end
+
   def stuff?
     office? or doctor? or admin?
   end

@@ -5,7 +5,8 @@ class VisitsController < ApplicationController
   expose_decorated(:visit, attributes: :permitted_params)
 
   before_filter :authenticate_stuff!, only: :index
-  before_filter :visit_patient_and_doctor, except: :index
+  before_filter :visit_patient_and_doctor, only: :show
+  before_filter :authenticate_patient!, only: :request
 
   def create
     if visit.save

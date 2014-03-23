@@ -12,3 +12,23 @@
     %p
       %strong Note for doctor:
       = @visit.note
+
+    - if @visit.instructions
+      %p
+        %strong Instructions:
+        = @visit.instructions
+
+    - if @visit.meds.any?
+      %p
+        %strong Meds:
+        = @visit.meds.map{ |m| "#{m.name} #{m.form} (#{m.wrapper})" }.to_sentence
+
+    - if @visit.procedures.any?
+      %p
+        %strong Procedures:
+        = @visit.procedures.map{ |p| "#{p.name} (#{p.icd9})" }.to_sentence
+
+    - if @visit.recognitions.any?
+      %p
+        %strong Recognitions:
+        = @visit.recognitions.map{ |r| "#{r.name} (#{r.icd10})" }.to_sentence
