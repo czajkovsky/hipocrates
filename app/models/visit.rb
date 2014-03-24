@@ -34,4 +34,12 @@ class Visit
     user.is?(:office) or user.is?(:admin) or self.doctor == user or self.patient == user
   end
 
+  def self.remind
+    Visit.all.each do |v|
+      if v.date.present? and v.date.to_date > Time.now.to_date and (v.date.to_date - Time.now.to_date) < 2
+        PatientMailer.remind(v).deliver if v.patient.email.present?
+      end
+    end
+  end
+
 end

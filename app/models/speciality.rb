@@ -2,7 +2,7 @@ class Speciality
   include Mongoid::Document
 
   field :name, type: String
-  field :active, default: false
+  field :active, type: Boolean, default: false
 
   validates :name, presence: true, uniqueness: true
 

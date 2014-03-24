@@ -26,6 +26,7 @@ gem 'quiet_assets'
 gem 'common_numbers_rails'
 gem 'recursive-open-struct'
 gem 'mail'
+gem 'whenever', require: false
 
 group :doc do
   gem 'sdoc', require: false
