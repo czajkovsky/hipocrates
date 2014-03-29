@@ -21,6 +21,7 @@
               %td
                 = link_to 'Delete med', med_path(m), method: :delete, class: 'btn btn-xs btn-danger pull-right'
                 = link_to 'Edit med', edit_med_path(m), class: 'btn btn-xs btn-default pull-right'
+    = paginate meds
 - if admin?
   .row
     .col-lg-12

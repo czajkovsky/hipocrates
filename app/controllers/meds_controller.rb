@@ -3,7 +3,7 @@ class MedsController < ApplicationController
   before_filter :authenticate_stuff!
   before_filter :authenticate_admin!, except: :index
 
-  expose(:meds)
+  expose(:meds) { Med.ordered.page(params[:page]) }
   expose(:med, attributes: :permitted_params)
 
   def create
