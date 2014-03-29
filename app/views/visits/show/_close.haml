@@ -5,13 +5,15 @@
         .panel-heading Doctors actions
         .panel-body
 
+          %h4 Recogntions
           .form-group
-            %input#recognition-search.form-control{ placeholder: 'Type ICD9/name' }
-          = f.association :recognitions, as: :check_boxes, collection: Recognition.ordered, label_method: lambda { |r| "#{r.icd10} (#{r.name})" }
+            %input#recognition-search.form-control{ placeholder: 'Type recognition ICD9/name (min 3 characters)' }
+          = f.association :recognitions, as: :check_boxes, collection: Recognition.ordered, label: false, label_method: lambda { |r| "#{r.icd10} (#{r.name})" }
 
+          %h4 Procedures
           .form-group
-            %input#procedure-search.form-control{ placeholder: 'Type ICD10/name' }
-          = f.association :procedures, as: :check_boxes, collection: Procedure.ordered, label_method: lambda { |p| "#{p.icd9} (#{p.name})" }
+            %input#procedure-search.form-control{ placeholder: 'Type procedure ICD10/name (min 3 characters)' }
+          = f.association :procedures, as: :check_boxes, collection: Procedure.ordered, label: false, label_method: lambda { |p| "#{p.icd9} (#{p.name})" }
 
           %h4 Meds
           .form-group
