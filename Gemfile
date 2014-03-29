@@ -27,6 +27,8 @@ gem 'common_numbers_rails'
 gem 'recursive-open-struct'
 gem 'mail'
 gem 'whenever', require: false
+gem "spreadsheet", "0.9.0"
+gem "roo"
 
 group :doc do
   gem 'sdoc', require: false

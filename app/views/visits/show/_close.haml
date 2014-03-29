@@ -14,8 +14,8 @@
           = f.association :procedures, as: :check_boxes, collection: Procedure.ordered, label_method: lambda { |p| "#{p.icd9} (#{p.name})" }
 
           .form-group
-            %input#med-search.form-control{ placeholder: 'Type name/form/wrapper' }
-          = f.association :meds, as: :check_boxes, collection: Med.ordered, label_method: lambda { |m| "#{m.name} (#{m.form} - #{m.wrapper})" }
+            %input#med-search.form-control{ placeholder: 'Type name/form' }
+          = f.association :meds, as: :check_boxes, collection: Med.ordered, label_method: lambda { |m| "#{m.name} (#{m.form})" }
 
           = f.input :instructions, as: :text
           = f.button :submit, class: 'btn btn-lg btn-block btn-success'

@@ -9,8 +9,6 @@
           %th Num
           %th Name
           %th Form
-          %th Dose
-          %th Wrapper
           - if admin?
             %th Actions
       %tbody
@@ -19,8 +17,6 @@
             %td= i + 1
             %td= m.name
             %td= m.form
-            %td= m.dose
-            %td= m.wrapper
             - if admin?
               %td
                 = link_to 'Delete med', med_path(m), method: :delete, class: 'btn btn-xs btn-danger pull-right'

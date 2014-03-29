@@ -138,9 +138,7 @@ Model odpowiedzialny za leki (dodawane przez administatora).
 has_and_belongs_to_many :visits
 
 field :name, type: String
-field :dose, type: String
 field :form, type: String
-field :wrapper, type: String
 ```
 
 ### Procedure

@@ -21,7 +21,7 @@
     - if @visit.meds.any?
       %p
         %strong Meds:
-        = @visit.meds.map{ |m| "#{m.name} #{m.form} (#{m.wrapper})" }.to_sentence
+        = @visit.meds.map{ |m| "#{m.name} #{m.form}" }.to_sentence
 
     - if @visit.procedures.any?
       %p

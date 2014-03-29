@@ -30,7 +30,7 @@ class MedsController < ApplicationController
   private
 
   def permitted_params
-    params.require(:med).permit(:name, :form, :dose, :wrapper)
+    params.require(:med).permit(:name, :form)
   end
 
 end
