@@ -3,7 +3,7 @@ class RecognitionsController < ApplicationController
   before_filter :authenticate_stuff!
   before_filter :authenticate_admin!, except: :index
 
-  expose(:recognitions)
+  expose(:recognitions) { Recognition.ordered.page(params[:page]) }
   expose(:recognition, attributes: :permitted_params)
 
   def create
