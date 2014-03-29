@@ -6,6 +6,9 @@ class Hipocrates.RailsViews.VisitsShowView extends Backbone.View
     'keyup #procedure-search': 'searchProcedures'
     'keyup #med-search': 'searchMeds'
 
+  initialize: () ->
+    @hideMeds()
+
   searchRecognitions: (e) ->
     value = $(e.target).val().toLowerCase()
     $('.visit_recognitions label').each (index) ->
@@ -18,6 +21,11 @@ class Hipocrates.RailsViews.VisitsShowView extends Backbone.View
 
   searchMeds: (e) ->
     value = $(e.target).val().toLowerCase()
-    $('.visit_meds label').each (index) ->
-      if $(@).text().toLowerCase().indexOf(value) == -1 then $(@).hide() else $(@).show()
+    if value.length > 2
+      $('.visit_meds label').each (index) ->
+        if $(@).text().toLowerCase().indexOf(value) == -1 then $(@).hide() else $(@).show()
+    else
+      @hideMeds()
 
+  hideMeds: () ->
+    $('.visit_meds label').hide()
