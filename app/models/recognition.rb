@@ -9,7 +9,7 @@ class Recognition
   scope :ordered, -> { order_by('icd10 asc') }
 
   def self.search search
-    where(name: search)
+    where(name: /#{search}/)
   end
 
 end

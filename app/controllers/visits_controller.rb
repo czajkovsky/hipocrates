@@ -34,21 +34,24 @@ class VisitsController < ApplicationController
   end
 
   def update_meds
-    @searched_meds = (visit.meds.ordered.entries + Med.ordered.search(params[:search]).entries).uniq
+    @searched_meds = visit.meds.ordered.entries
+    @searched_meds = (@searched_meds + Med.search(params[:search]).limit(15).ordered.entries).uniq if params[:search] != ''
     respond_to do |format|
       format.js { render layout: false }
     end
   end
 
   def update_procedures
-    @searched_procedures = (visit.procedures.ordered.entries + Procedure.ordered.search(params[:search]).entries).uniq
+    @searched_procedures = visit.procedures.ordered.entries
+    @searched_procedures = (@searched_procedures + Procedure.search(params[:search]).limit(15).ordered.entries).uniq if params[:search] != ''
     respond_to do |format|
       format.js { render layout: false }
     end
   end
 
   def update_recognitions
-    @searched_recognitions = (visit.recognitions.ordered.entries + Recognition.ordered.search(params[:search]).entries).uniq
+    @searched_recognitions = visit.recognitions.ordered.entries
+    @searched_recognitions = (@searched_recognitions + Recognition.search(params[:search]).limit(15).ordered.entries).uniq if params[:search] != ''
     respond_to do |format|
       format.js { render layout: false }
     end

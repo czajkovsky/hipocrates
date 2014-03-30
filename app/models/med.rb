@@ -9,7 +9,7 @@ class Med
   scope :ordered, -> { order_by('name asc') }
 
   def self.search search
-    where(name: search)
+    where(name: /#{search}/)
   end
 
 end

@@ -9,7 +9,7 @@ class Procedure
   scope :ordered, -> { order_by('icd9 asc') }
 
   def self.search search
-    where(name: search)
+    where(name: /#{search}/)
   end
 
 end
