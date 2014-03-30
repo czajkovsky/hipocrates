@@ -19,6 +19,10 @@ Hipocrates::Application.routes.draw do
     collection do
       get 'request'
     end
+    member do
+      get 'update_meds'
+      put 'prescript'
+    end
   end
 
   get 'patients', to: 'users#patients'

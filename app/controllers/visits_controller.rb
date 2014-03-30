@@ -33,6 +33,18 @@ class VisitsController < ApplicationController
     redirect_to root_path
   end
 
+  def update_meds
+    @searched_meds = (visit.meds.ordered.entries + Med.ordered.search(params[:search]).entries).uniq
+    respond_to do |format|
+      format.js { render layout: false }
+    end
+  end
+
+  def prescript
+    visit.save
+    render :index
+  end
+
   private
 
   def permitted_params

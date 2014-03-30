@@ -1,25 +1,12 @@
-= simple_form_for visit, html: { novalidate: true } do |f|
-  .row
-    .col-lg-12
-      .panel.panel-default
-        .panel-heading Doctors actions
-        .panel-body
+.row
+  .col-lg-12
+    .panel.panel-default
+      .panel-heading Doctors actions
+      .panel-body
 
-          %h4 Recogntions
-          .form-group
-            %input#recognition-search.form-control{ placeholder: 'Type recognition ICD9/name (min 3 characters)' }
-          = f.association :recognitions, as: :check_boxes, collection: Recognition.ordered, label: false, label_method: lambda { |r| "#{r.icd10} (#{r.name})" }
+        %h4 Meds
+        %input#med-search.form-control{ name: 'search', placeholder: 'Type med name (min 3 characters)', data: { action: update_meds_visit_url(visit) } }
+        #meds= render 'visits/show/close/meds', visible_meds: visit.meds
 
-          %h4 Procedures
-          .form-group
-            %input#procedure-search.form-control{ placeholder: 'Type procedure ICD10/name (min 3 characters)' }
-          = f.association :procedures, as: :check_boxes, collection: Procedure.ordered, label: false, label_method: lambda { |p| "#{p.icd9} (#{p.name})" }
 
-          %h4 Meds
-          .form-group
-            %input#med-search.form-control{ placeholder: 'Type med name/form (min 3 characters)' }
-          = f.association :meds, as: :check_boxes, collection: Med.ordered, label: false, label_method: lambda { |m| "#{m.name} (#{m.form})" }
-
-          = f.input :instructions, as: :text
-          = f.button :submit, class: 'btn btn-lg btn-block btn-success'
 
