@@ -6,6 +6,7 @@ class Hipocrates.RailsViews.VisitsShowView extends Backbone.View
     'keyup #procedure-search': 'search'
     'keyup #med-search': 'search'
     'change #edit_meds': 'editMeds'
+    'change #edit_procedures': 'editProcedures'
     'change #edit_recognitions': 'editRecognitions'
 
   search: (e) ->
@@ -22,6 +23,8 @@ class Hipocrates.RailsViews.VisitsShowView extends Backbone.View
         $.ajax({url: $form.attr('action'), type: "PUT", data: { visit: { med_ids: values } } })
       if object_type == 'recognitions'
         $.ajax({url: $form.attr('action'), type: "PUT", data: { visit: { recognition_ids: values } } })
+      if object_type == 'procedures'
+        $.ajax({url: $form.attr('action'), type: "PUT", data: { visit: { procedure_ids: values } } })
 
   editMeds: (e) ->
     $form = $('#edit_meds')
@@ -30,3 +33,7 @@ class Hipocrates.RailsViews.VisitsShowView extends Backbone.View
   editRecognitions: (e) ->
     $form = $('#edit_recognitions')
     @editBase($form, 'recognitions')
+
+  editProcedures: (e) ->
+    $form = $('#edit_procedures')
+    @editBase($form, 'procedures')
