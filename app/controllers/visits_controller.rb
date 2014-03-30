@@ -19,6 +19,11 @@ class VisitsController < ApplicationController
     end
   end
 
+  def summary
+    send_confirmation
+    redirect_to visit_path(visit)
+  end
+
   def update
     if visit.save
       send_confirmation

@@ -24,6 +24,7 @@ Hipocrates::Application.routes.draw do
       get 'update_recognitions'
       get 'update_procedures'
       put 'prescript'
+      get 'summary'
     end
   end
 

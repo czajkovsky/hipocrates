@@ -16,5 +16,4 @@
         %input#med-search.form-control{ name: 'search', placeholder: 'Type med name', data: { action: update_meds_visit_url(visit) } }
         #meds= render 'visits/show/close/meds', visible_meds: visit.meds
 
-
-
+        = link_to 'Send visit summary', summary_visit_path(visit), class: 'btn btn-success btn-block btn-lg'
