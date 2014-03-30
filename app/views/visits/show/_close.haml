@@ -4,6 +4,10 @@
       .panel-heading Doctors actions
       .panel-body
 
+        %h4 Recognitions
+        %input#recognition-search.form-control{ name: 'search', placeholder: 'Type recognition name (min 3 characters)', data: { action: update_recognitions_visit_url(visit) } }
+        #recognitions= render 'visits/show/close/recognitions', visible_recognitions: visit.recognitions
+
         %h4 Meds
         %input#med-search.form-control{ name: 'search', placeholder: 'Type med name (min 3 characters)', data: { action: update_meds_visit_url(visit) } }
         #meds= render 'visits/show/close/meds', visible_meds: visit.meds

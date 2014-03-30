@@ -1,0 +1,3 @@
+= simple_form_for visit, url: prescript_visit_path(visit), html: { id: 'edit_recognitions', novalidate: true } do |f|
+  = f.association :meds, as: :check_boxes, collection: visible_recognitions, label: false, label_method: lambda { |r| "#{r.icd10} (#{r.name})" }
+
