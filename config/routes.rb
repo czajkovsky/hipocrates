@@ -22,6 +22,7 @@ Hipocrates::Application.routes.draw do
     member do
       get 'update_meds'
       get 'update_recognitions'
+      get 'update_procedures'
       put 'prescript'
     end
   end

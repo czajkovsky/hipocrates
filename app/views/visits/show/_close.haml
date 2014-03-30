@@ -5,11 +5,15 @@
       .panel-body
 
         %h4 Recognitions
-        %input#recognition-search.form-control{ name: 'search', placeholder: 'Type recognition name (min 3 characters)', data: { action: update_recognitions_visit_url(visit) } }
+        %input#recognition-search.form-control{ name: 'search', placeholder: 'Type recognition name', data: { action: update_recognitions_visit_url(visit) } }
         #recognitions= render 'visits/show/close/recognitions', visible_recognitions: visit.recognitions
 
+        %h4 Procedures
+        %input#procedure-search.form-control{ name: 'search', placeholder: 'Type procedure name', data: { action: update_procedures_visit_url(visit) } }
+        #procedures= render 'visits/show/close/procedures', visible_procedures: visit.procedures
+
         %h4 Meds
-        %input#med-search.form-control{ name: 'search', placeholder: 'Type med name (min 3 characters)', data: { action: update_meds_visit_url(visit) } }
+        %input#med-search.form-control{ name: 'search', placeholder: 'Type med name', data: { action: update_meds_visit_url(visit) } }
         #meds= render 'visits/show/close/meds', visible_meds: visit.meds
 
 

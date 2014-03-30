@@ -40,6 +40,13 @@ class VisitsController < ApplicationController
     end
   end
 
+  def update_procedures
+    @searched_procedures = (visit.procedures.ordered.entries + Procedure.ordered.search(params[:search]).entries).uniq
+    respond_to do |format|
+      format.js { render layout: false }
+    end
+  end
+
   def update_recognitions
     @searched_recognitions = (visit.recognitions.ordered.entries + Recognition.ordered.search(params[:search]).entries).uniq
     respond_to do |format|
