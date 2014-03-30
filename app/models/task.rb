@@ -7,7 +7,7 @@ class Task
     4.upto(10823) do |line|
       name = ex.cell(line, 'B')
       form = ex.cell(line, 'D')
-      Med.create(name: name, form: form) if name.present? and form.present?
+      Med.create(name: name.downcase, form: form) if name.present? and form.present?
     end
   end
 

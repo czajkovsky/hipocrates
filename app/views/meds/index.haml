@@ -1,27 +1,10 @@
 .row
   .col-lg-12
     %h2 Meds
-.row
-  .col-lg-12
-    %table.table.table-striped.table-bordered
-      %thead
-        %tr
-          %th Num
-          %th Name
-          %th Form
-          - if admin?
-            %th Actions
-      %tbody
-        - meds.each_with_index do |m, i|
-          %tr
-            %td= i + 1
-            %td= m.name
-            %td= m.form
-            - if admin?
-              %td
-                = link_to 'Delete med', med_path(m), method: :delete, class: 'btn btn-xs btn-danger pull-right'
-                = link_to 'Edit med', edit_med_path(m), class: 'btn btn-xs btn-default pull-right'
-    = paginate meds
+= form_tag meds_path, method: 'get', id: "meds-search" do
+  .form-group
+    %input#search.form-control{ name: 'search', placeholder: 'Type med name' }
+#meds-list= render 'meds'
 - if admin?
   .row
     .col-lg-12

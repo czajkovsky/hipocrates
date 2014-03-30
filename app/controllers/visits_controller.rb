@@ -3,6 +3,8 @@ class VisitsController < ApplicationController
   expose(:all_visits) { Visit.ordered.decorate }
   expose(:visits)
   expose_decorated(:visit, attributes: :permitted_params)
+  expose(:meds) { Med.search(params[:search]).limit(15) }
+  expose(:recognitions) { Recognition.limit(15) }
 
   before_filter :authenticate_stuff!, only: :index
   before_filter :visit_patient_and_doctor, only: :show
