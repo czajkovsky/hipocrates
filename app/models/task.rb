@@ -21,4 +21,14 @@ class Task
     end
   end
 
+  def self.fetch_proceudres_from_excel
+    ex = Roo::Excel.new('public/procedures.xls')
+    ex.default_sheet = ex.sheets[0]
+    2.upto(14568) do |line|
+      icd9 = ex.cell(line, 'A')
+      name = ex.cell(line, 'B')
+      Procedure.create(icd9: icd9, name: name) if name.present? and icd9.present?
+    end
+  end
+
 end
