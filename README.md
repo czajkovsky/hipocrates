@@ -194,5 +194,8 @@ mail:
   password: 'secret'
 ```
 
+## Napotkane wyzwania
+
+Głównym wyzwaniem był widok wizyty w którym lekarz musi uzpełnić rozpoznanie, leki oraz procedury. Łącznie powyższe modele są reprezentowane przez ~50tys. rekordów. Aby zapewnić wysoki UX/UI skorzystałem z technologi AJAX które pozwala na asynchroniczne pobranie danych.
 
 
