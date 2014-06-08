@@ -8,6 +8,8 @@ E-hospital project for [Computer Science in Medicine](http://www.cs.put.poznan.p
 
 Projekt zrealizowany w ramach przedmiotu Informatyka w Medycynie prowadzony przez [mgr Tomasza Pawlaka](http://www.cs.put.poznan.pl/tpawlak).
 
+[Prezentaja systemu](https://docs.google.com/presentation/d/1N5nNiy3iIpo_IUfKeyVYC71sFzc7WSn8pUA95CNcE40/edit?usp=sharing).
+
 Celem projektu było zrealizowanie aplikacji internetowej pełniącą rolę e-szpitala. Do wykonania zastosowano m.in
 + framework Ruby On Rails
 + bazę danych MongoDB
